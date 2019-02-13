@@ -39,6 +39,10 @@ gem 'jbuilder', '~> 2.5'
 # Haml-rails provides Haml generators for Rails 4. It also enables Haml as the templating engine for you.
 gem "haml-rails", "~> 1.0"
 
+# Added 02-13-19
+# For admin use
+gem 'trestle'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
