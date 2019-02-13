@@ -19,3 +19,20 @@
    font-family: monospace;
    font-size: 5rem;
  }
+
+ ul.nav {
+   text-align: center;
+   margin: 20px 0 0 ;
+   padding: 10px 0;
+ }
+
+ a.nav-link{
+   list-style: none;
+   margin: 0 2px;
+   padding: 0;
+ }
+
+ li.nav-item {
+    display: inline-block;
+    padding: 5px 5px;
+ }
