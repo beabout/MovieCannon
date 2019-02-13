@@ -43,6 +43,11 @@ gem "haml-rails", "~> 1.0"
 # For admin use
 gem 'trestle'
 
+# Added 02-13-19
+# For admin/user login security
+gem 'devise'
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
