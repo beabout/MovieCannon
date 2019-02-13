@@ -10,10 +10,14 @@
   %body
     .container
       %ul.nav
+        %li.titlehead MovieCannon
         -# %li.nav-item
         -#   %a.nav-link= link_to "Logout", main_app.destroy_admin_session_path, method: :delete
         %li.nav-item
           %a.nav-link= link_to "Home", root_path
+        %li.nav-item
+          %a.nav-link= link_to "Logout", main_app.destroy_admin_session_path, method: :delete
+
         -# %li.nav-item
         -#   %a.nav-link= link_to "Catalog", films_path
         -# %li.nav-item
