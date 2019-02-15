@@ -1,2 +1,3 @@
-%h2 film title goes here
-%h3 film image, background image and information is rendered here
+%h2= @film.title
+%h3= "#{@film.release_date} | #{@film.run_time}"
+%h4= @film.description
