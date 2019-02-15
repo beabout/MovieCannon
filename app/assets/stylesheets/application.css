@@ -48,6 +48,12 @@
    padding: 0;
  }
 
+ a.btn.btn-primary{
+   color:#ffffff;
+   background-color:#168679;
+   
+ }
+
  li.nav-item {
     color: #168679;
     display: inline-block;
