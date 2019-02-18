@@ -2,12 +2,13 @@ class FilmsController < ApplicationController
 
   # Display active catalog
   def index
+    @films = Film.all
 
   end
 
   # Display contents (info, Persons, classifications) for a specific film
   def show
-
+    @film = Film.find(params[:id])
   end
 
   # Allow editing of a film's data

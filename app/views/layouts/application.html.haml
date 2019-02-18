@@ -2,6 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %icon{:href => "favicon.ico", :rel => "shortcut icon", :type => "image/x-icon"}
     %title MovieCannon
     = csrf_meta_tags
     = csp_meta_tag
@@ -9,17 +10,39 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .container
-      %ul.nav
-        -# %li.nav-item
-        -#   %a.nav-link= link_to "Logout", main_app.destroy_admin_session_path, method: :delete
-        %li.nav-item
-          %a.nav-link= link_to "Home", root_path
-        -# %li.nav-item
-        -#   %a.nav-link= link_to "Catalog", films_path
-        -# %li.nav-item
-        -#   %a.nav-link= link_to "MVPs", some_path
-        -# %li.nav-item
-        -#   %a.nav-link= link_to "My Revs", some_path
-        %li.nav-item
-          %a.nav-link= link_to "Admin", trestle_path
-        = yield
+      %nav.navbar.navbar-light.bg-light
+      %navbar-brand MovieCannon
+      %li.nav-item
+        %a.nav-link= link_to "Home", root_path
+      %li.nav-item
+        %a.nav-link= link_to "Logout", destroy_admin_session_path, method: :delete
+      -# %li.nav-item
+      -#   %a.nav-link= link_to "Catalog", films_path
+      -# %li.nav-item
+      -#   %a.nav-link= link_to "MVPs", some_path
+      -# %li.nav-item
+      -#   %a.nav-link= link_to "My Revs", some_path
+      %li.nav-item
+        %a.nav-link= link_to "Admin", trestle_path
+      = yield
+
+
+
+
+
+
+      -# %ul.nav
+      -#   %li.navbar-brand MovieCannon
+      -#   %li.nav-item
+      -#     %a.nav-link= link_to "Home", root_path
+      -#   %li.nav-item
+      -#     %a.nav-link= link_to "Logout", destroy_admin_session_path, method: :delete
+      -#   -# %li.nav-item
+      -#   -#   %a.nav-link= link_to "Catalog", films_path
+      -#   -# %li.nav-item
+      -#   -#   %a.nav-link= link_to "MVPs", some_path
+      -#   -# %li.nav-item
+      -#   -#   %a.nav-link= link_to "My Revs", some_path
+      -#   %li.nav-item
+      -#     %a.nav-link= link_to "Admin", trestle_path
+      -#   = yield

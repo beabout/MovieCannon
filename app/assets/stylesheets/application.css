@@ -15,24 +15,45 @@
  */
 
  h2{
-   color: #168679;
-   font-family: monospace;
+   color: #FFFFFF;
    font-size: 5rem;
+   text-align: center;
+   background-color: #168679;
+ }
+
+ h3{
+   color: #168679;
+   font-size: 2rem;
+   text-align: center;
+ }
+
+ .container{
+   font-family: Sans-serif;
+   position: fixed;
  }
 
  ul.nav {
+   color: #168679;
    text-align: center;
-   margin: 20px 0 0 ;
-   padding: 10px 0;
+   margin: 10px 0 0 ;
+   padding: 1rem 0;
  }
 
  a.nav-link{
+   color: #168679;
    list-style: none;
    margin: 0 2px;
    padding: 0;
  }
 
+ a.btn.btn-primary{
+   color:#168679;
+   background-color:#ffffff;
+   text-align: center;
+ }
+
  li.nav-item {
+    color: #168679;
     display: inline-block;
     padding: 5px 5px;
  }

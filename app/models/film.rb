@@ -7,4 +7,12 @@ class Film < ApplicationRecord
 
   validates_presence_of :title
 
+  def format_runtime
+    if run_time > 60
+      minutes = (run_time % 60).floor
+      hours = (run_time / 60).floor
+      "#{hours}#{"hr".pluralize(hours)} #{minutes}min"
+    end
+  end
+
 end
