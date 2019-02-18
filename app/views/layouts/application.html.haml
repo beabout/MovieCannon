@@ -9,7 +9,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    .container
+    .wrapper
       %nav.navbar.navbar-light.bg-light
       %navbar-brand MovieCannon
       %li.nav-item
@@ -24,6 +24,7 @@
       -#   %a.nav-link= link_to "My Revs", some_path
       %li.nav-item
         %a.nav-link= link_to "Admin", trestle_path
+    .page
       = yield
 
 

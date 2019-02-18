@@ -27,10 +27,15 @@
    text-align: center;
  }
 
- .container{
+ .wrapper{
    font-family: Sans-serif;
    /* position: fixed; */
  }
+
+.page{
+  font-family: Sans-serif;
+  text-align: center;
+}
 
  ul.nav {
    color: #168679;
@@ -44,12 +49,6 @@
    list-style: none;
    margin: 0 2px;
    padding: 0;
- }
-
- a.btn.btn-primary{
-   color:#168679;
-   background-color:#ffffff;
-   text-align: center;
  }
 
  li.nav-item {
