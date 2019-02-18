@@ -16,7 +16,6 @@
 
  h2{
    color: #FFFFFF;
-   font-family: monospace;
    font-size: 5rem;
    text-align: center;
    background-color: #168679;
@@ -24,17 +23,16 @@
 
  h3{
    color: #168679;
-   font-family: monospace;
    font-size: 2rem;
    text-align: center;
  }
 
- li.titlehead{
-   text-align: left;
+ .container{
+   font-family: Sans-serif;
+   position: fixed;
  }
 
  ul.nav {
-   font-family: monospace;
    color: #168679;
    text-align: center;
    margin: 10px 0 0 ;
@@ -49,9 +47,9 @@
  }
 
  a.btn.btn-primary{
-   color:#ffffff;
-   background-color:#168679;
-   
+   color:#168679;
+   background-color:#ffffff;
+   text-align: center;
  }
 
  li.nav-item {

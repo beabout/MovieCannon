@@ -48,6 +48,7 @@ gem 'trestle'
 gem 'devise'
 
 # Added 02-15-19
+# CSS View Framework. Formatting for views with much content
 gem 'bootstrap', '~> 4.3.1'
 
 # Reduces boot times through caching; required in config/boot.rb
