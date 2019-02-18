@@ -1,4 +1,4 @@
-Trestle.resource(:films) do
+Trestle.resource(:films, model: Film) do
   menu do
     item :films, icon: "fa fa-film"
   end
