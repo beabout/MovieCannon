@@ -29,7 +29,7 @@
 
  .container{
    font-family: Sans-serif;
-   position: fixed;
+   /* position: fixed; */
  }
 
  ul.nav {
