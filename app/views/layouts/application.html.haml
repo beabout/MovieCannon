@@ -9,41 +9,17 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    .wrapper
+    %div{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.5; z-index: -999;" }
+      = image_tag 'btsgodfater.jpg'
+    %div.navigationbar
       %nav.navbar.navbar-light.bg-light
-      %navbar-brand MovieCannon
-      %li.nav-item
-        %a.nav-link= link_to "Home", root_path
-      %li.nav-item
-        %a.nav-link= link_to "Logout", destroy_admin_session_path, method: :delete
-      -# %li.nav-item
-      -#   %a.nav-link= link_to "Catalog", films_path
-      -# %li.nav-item
-      -#   %a.nav-link= link_to "MVPs", some_path
-      -# %li.nav-item
-      -#   %a.nav-link= link_to "My Revs", some_path
-      %li.nav-item
-        %a.nav-link= link_to "Admin", trestle_path
-    .page
-      = yield
-
-
-
-
-
-
-      -# %ul.nav
-      -#   %li.navbar-brand MovieCannon
-      -#   %li.nav-item
-      -#     %a.nav-link= link_to "Home", root_path
-      -#   %li.nav-item
-      -#     %a.nav-link= link_to "Logout", destroy_admin_session_path, method: :delete
-      -#   -# %li.nav-item
-      -#   -#   %a.nav-link= link_to "Catalog", films_path
-      -#   -# %li.nav-item
-      -#   -#   %a.nav-link= link_to "MVPs", some_path
-      -#   -# %li.nav-item
-      -#   -#   %a.nav-link= link_to "My Revs", some_path
-      -#   %li.nav-item
-      -#     %a.nav-link= link_to "Admin", trestle_path
-      -#   = yield
+        .navbar-brand MovieCannon
+        %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavAltMarkup", "data-toggle" => "collapse", :type => "button"}
+        %ul.navbar-nav
+          %li.nav-item
+            %a.nav-link= link_to "Home", root_path
+          %li.nav-item
+            %a.nav-link= link_to "Logout", destroy_admin_session_path, method: :delete
+          %li.nav-item
+            %a.nav-link= link_to "Admin", trestle_path
+    = yield

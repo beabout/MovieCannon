@@ -2,12 +2,13 @@
 %h3 Display all films in the catalog here, boostrap-card format
 
 .row
-  .col-sm-6
-    .card.mb-4
-      =image_tag "btsgodfater.jpg"
-      .card-body
-      %h3.card-title Movie title
-      %h5.card-subtitle Movie genres
-      %p.card-text Movie rating
-      %br hey
-      = link_to "More info", film_path(1), class: "btn btn-primary"
+  - @films.each do |film|
+    .col-sm-6
+      .card.mb-4
+        =image_tag "btsgodfater.jpg"
+        .card-body
+          %h3.card-title= film.title
+          -# %h5.card-subtitle= film.genres
+          %p.card-text= film.description
+          %br hey
+          = link_to "More info", film_path(film), class: "btn btn-primary"

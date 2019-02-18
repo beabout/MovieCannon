@@ -51,6 +51,10 @@ gem 'devise'
 # CSS View Framework. Formatting for views with much content
 gem 'bootstrap', '~> 4.3.1'
 
+# Added 02-18-19
+# gem 'bootstrap-sass'
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
