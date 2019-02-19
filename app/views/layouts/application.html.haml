@@ -11,15 +11,40 @@
   %body
     %div{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.5; z-index: -999;" }
       = image_tag 'btsgodfater.jpg'
-    %div.navigationbar
-      %nav.navbar.navbar-light.bg-light
-        .navbar-brand MovieCannon
-        %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavAltMarkup", "data-toggle" => "collapse", :type => "button"}
+    -#
+    -# %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    -#   %a.navbar-brand MovieCannon
+    -#   %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavAltMarkup", "data-toggle" => "collapse", :type => "button"}
+    -#     %span.navbar-toggler-icon
+    -# #navbarNav.collapse.navbar-collapse
+    -#   %ul.navbar-nav
+    -#     %li.nav-item
+    -#       %a.nav-link{:href => "#"} Logout
+    -#     %li.nav-item
+    -#       %a.nav-link= link_to "Logout", destroy_admin_session_path, method: :delete
+    -#     %li.nav-item
+    -#       %a.nav-link= link_to "Admin", trestle_path
+
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      -# = image_tag 'M.png', {height: 40, width: 40}
+      %img.d-inline-block.align-top{:height => "50", :src => "assets/M.png", :width => "50"}
+      %a.navbar-brand{:href => "#"} MovieCannon
+      %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarNav.collapse.navbar-collapse
         %ul.navbar-nav
+          %li.nav-item.active
+            %a.nav-link{:href => "home#index"}
+              Home
+              %span.sr-only (current)
           %li.nav-item
-            %a.nav-link= link_to "Home", root_path
+            %a.nav-link{:href => "devise/sessions#destroy"} Logout
           %li.nav-item
-            %a.nav-link= link_to "Logout", destroy_admin_session_path, method: :delete
-          %li.nav-item
-            %a.nav-link= link_to "Admin", trestle_path
+            %a.nav-link{:href => "trestle/dashboard#index"} Admin
+
+
+
+
+
+
     = yield

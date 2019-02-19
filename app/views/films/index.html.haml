@@ -1,14 +1,15 @@
 %h2 Catalog
-%h3 Display all films in the catalog here, boostrap-card format
 
 .row
   - @films.each do |film|
-    .col-sm-6
-      .card.mb-4
-        =image_tag "btsgodfater.jpg"
+    .col-sm-4
+      .card.border-primary.mb-6{:style => "width: 25rem;"}
+        =image_tag "Empirestrikesback.jpg", {class: "card-img-top", height: 500, width: 400}
         .card-body
           %h4.card-title= film.title
-          -# %h5.card-subtitle= film.genres
+          %h5.card-subtitle
+            =image_tag 'PG.png', {height: 48, width: 48}
+            Genres
           %p.card-text= film.description
-          %br hey
-          = link_to "More info", film_path(film), class: "btn btn-secondary"
+          .col-md-4.text-center
+            = link_to "More info", film_path(film), class: "btn btn-secondary"
