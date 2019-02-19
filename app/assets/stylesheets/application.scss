@@ -6,6 +6,11 @@ body {
   // background-image: asset-url("btsgodfater.jpg");
 }
 
+.homepage{
+  margin-top: 5rem;
+}
+
+
  h2{
    color: #ffffff;
    font-size: 5rem;
@@ -26,10 +31,6 @@ body {
    @include media-breakpoint-only(xl) {
      column-count: 5;
    }
- }
-
- .row{
-   padding: 1rem;
  }
 
 .field{

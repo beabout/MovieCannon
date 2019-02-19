@@ -17,19 +17,26 @@ Trestle.resource(:films) do
     column :genres do |film|
       film.genre_list
     end
+    column :mpaa_rating
     actions
+  end
+
+
+  active_storage_fields do
+    [:filmshot, :movie_poster]
   end
 
   # Customize the form fields shown on the new/edit views.
   #
   form do |film|
     text_field :title
-    text_field :description
+    text_area :description
     datetime_field :release_date
     text_field :run_time
+    select :mpaa_rating, Film::MPAARatings
     collection_select :genre_ids, Genre.all, :id, :name, {label: "Genres"}, { multiple: true }
-    file_field :filmshot
-    file_field :movie_poster
+    active_storage_field :filmshot
+    active_storage_field :movie_poster
   end
 
   # By default, all parameters passed to the update and create actions will be

@@ -1,18 +1,20 @@
 %h2 Catalog
 
-.row
-  - @films.each do |film|
-    .col-sm-4
-      .card.border-primary.mb-6{:style => "width: 25rem;"}
-        - if film.movie_poster.attached?
-          =image_tag film.movie_poster, {class: "card-img-top", height: 500, width: "auto"}
-        - else
-          =image_tag "Empirestrikesback.jpg", {class: "card-img-top", height: 500, width: "auto"}
-        .card-body
-          %h4.card-title= "#{film.title} (#{film.year})"
-          %h5.card-subtitle
-            =image_tag 'PG.png', {height: 24}
-            = "#{film.format_runtime} - #{film.genre_list}"
-          %p.card-text= film.description
-          .text-center
-            = link_to "More about #{film.title}", film_path(film), class: "btn btn-secondary"
+.container
+  .row
+    - @films.each do |film|
+      .col-12.col-sm-6.col-md-4
+        .card.mb-4
+          - if film.movie_poster.attached?
+            =image_tag film.movie_poster, {class: "card-img-top img-fluid", height: 500, width: "auto"}
+          - else
+            =image_tag "Empirestrikesback.jpg", {class: "card-img-top", height: 500, width: "auto"}
+          .card-body
+            %h4.card-title= "#{film.title} (#{film.year})"
+            %h5.card-subtitle
+              =image_rating(film)
+              =image_tag 'PG.png', {height: 24}
+              = "#{film.format_runtime} - #{film.genre_list}"
+            %p.card-text= film.description
+            .text-center
+              = link_to "More about #{film.title}", film_path(film), class: "btn btn-secondary"
