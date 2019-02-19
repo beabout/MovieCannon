@@ -1,35 +1,21 @@
-Trestle.resource(:films) do
+Trestle.resource(:genres) do
   menu do
-    item :films, icon: "fa fa-film"
+    item :genres, icon: "fa fa-video-camera"
   end
 
   # Customize the table columns shown on the index view.
   #
   table do
-    column :title
+    column :name
     column :description
-    column :release_date do |t|
-      t.format_releasedate
-    end
-    column :run_time do |t|
-      t.format_runtime
-    end
-    column :genres do |film|
-      film.genre_list
-    end
     actions
   end
-
-  # Customize the form fields shown on the new/edit views.
   #
-  form do |film|
-    text_field :title
+  # # Customize the form fields shown on the new/edit views.
+  # #
+  form do |genre|
+    text_field :name
     text_field :description
-    datetime_field :release_date
-    text_field :run_time
-    collection_select :genre_ids, Genre.all, :id, :name, {label: "Genres"}, { multiple: true }
-    file_field :filmshot
-    file_field :movie_poster
   end
 
   # By default, all parameters passed to the update and create actions will be

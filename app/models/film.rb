@@ -30,4 +30,8 @@ class Film < ApplicationRecord
     release_date.strftime("%B %d, %Y")
   end
 
+  def genre_list
+    genres.map { |s| s.name }.join(", ")
+  end
+
 end
