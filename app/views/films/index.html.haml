@@ -4,12 +4,12 @@
   - @films.each do |film|
     .col-sm-4
       .card.border-primary.mb-6{:style => "width: 25rem;"}
-        =image_tag "Empirestrikesback.jpg", {class: "card-img-top", height: 500, width: 400}
+        =image_tag "Empirestrikesback.jpg", {class: "card-img-top", height: 500, width: "auto"}
         .card-body
-          %h4.card-title= film.title
+          %h4.card-title= "#{film.title} (#{film.year})"
           %h5.card-subtitle
-            =image_tag 'PG.png', {height: 48, width: 48}
-            Genres
+            =image_tag 'PG.png', {height: 24}
+            =film.format_runtime
           %p.card-text= film.description
-          .col-md-4.text-center
-            = link_to "More info", film_path(film), class: "btn btn-secondary"
+          .text-center
+            = link_to "More about #{film.title}", film_path(film), class: "btn btn-secondary"

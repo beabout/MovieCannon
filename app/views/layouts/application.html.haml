@@ -9,8 +9,8 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %div{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.5; z-index: -999;" }
-      = image_tag 'btsgodfater.jpg'
+    .background{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.5; z-index: -999;" }
+      = image_tag 'soundofmusic.jpg', {:width => "90%", :height => "auto", align:"middle"}
     -#
     -# %nav.navbar.navbar-expand-lg.navbar-light.bg-light
     -#   %a.navbar-brand MovieCannon
@@ -26,7 +26,6 @@
     -#       %a.nav-link= link_to "Admin", trestle_path
 
     %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      -# = image_tag 'M.png', {height: 40, width: 40}
       %img.d-inline-block.align-top{:height => "50", :src => "assets/M.png", :width => "50"}
       %a.navbar-brand{:href => "#"} MovieCannon
       %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
@@ -34,17 +33,13 @@
       #navbarNav.collapse.navbar-collapse
         %ul.navbar-nav
           %li.nav-item.active
-            %a.nav-link{:href => "home#index"}
-              Home
-              %span.sr-only (current)
+          = link_to root_path, class: "nav-link" do
+            Home
+            %span.sr-only (current)
           %li.nav-item
-            %a.nav-link{:href => "devise/sessions#destroy"} Logout
+          = link_to destroy_admin_session_path, class: "nav-link", method: :delete do
+            Logout
           %li.nav-item
-            %a.nav-link{:href => "trestle/dashboard#index"} Admin
-
-
-
-
-
-
+          = link_to trestle_path, class: "nav-link" do
+            Admin
     = yield

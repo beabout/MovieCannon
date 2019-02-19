@@ -2,7 +2,7 @@ $body-bg: #168679;
 @import "bootstrap";
 
 body {
-  font-family: Sans-serif;
+  // font-family: Sans-serif;
   // background-image: asset-url("btsgodfater.jpg");
 }
 
@@ -10,6 +10,7 @@ body {
    color: #ffffff;
    font-size: 5rem;
    text-align: center;
+   padding: 2rem;
  }
 
  h3{
@@ -26,3 +27,30 @@ body {
      column-count: 5;
    }
  }
+
+ .row{
+   padding: 1rem;
+ }
+
+.field{
+  text-align: center;
+}
+
+.actions{
+  text-align: center;
+}
+
+.background{
+  text-align: center;
+}
+
+.card-text{
+  padding-top: 0.7rem;
+  font-size: 0.7rem;
+}
+
+.card-title{
+  color: #168679;
+  font-weight: bold;
+  font-style: italic;
+}

@@ -22,4 +22,12 @@ class Film < ApplicationRecord
     image_tag 'R.png' if film.mpaa_rating == "R"
   end
 
+  def year
+    release_date.strftime("%Y")
+  end
+
+  def format_releasedate
+    release_date.strftime("%B %d, %Y")
+  end
+
 end
