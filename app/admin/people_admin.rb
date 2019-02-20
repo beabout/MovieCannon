@@ -8,8 +8,12 @@ Trestle.resource(:people) do
   table do
     column :name
     column :birthdate
-    column :type_id
+    # column :type_id
     actions
+  end
+
+  active_storage_fields do
+    [:headshot]
   end
 
   # Customize the form fields shown on the new/edit views.
@@ -17,7 +21,8 @@ Trestle.resource(:people) do
   form do |person|
     text_field :name
     datetime_field :birthdate
-    text_field :type_id
+    # text_field :type_id
+    active_storage_field :headshot
   end
 
   # By default, all parameters passed to the update and create actions will be

@@ -14,6 +14,6 @@
             %h5.card-subtitle
               =image_rating(film)
               ="#{film.format_runtime} - #{film.genre_list}"
-            %p.card-text= film.description
+            -# %p.card-text= film.description
             .text-center
               = link_to "More about #{film.title}", film_path(film), class: "btn btn-secondary"
