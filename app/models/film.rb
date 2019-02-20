@@ -5,6 +5,8 @@ class Film < ApplicationRecord
   has_one_attached :filmshot
   has_and_belongs_to_many :genres
   has_many :classifications, through: :film_classifications
+  has_many :film_people
+  has_many :people, through: :film_people
 
   validates_presence_of :title
   validate :has_nationality_classification

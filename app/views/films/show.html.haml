@@ -1,3 +1,17 @@
-%h2= @film.title
-%h3= "#{@film.format_releasedate} | #{@film.format_runtime}"
-%p= @film.description
+
+.container
+  %h6= @film.title
+  .row
+    .col-12.col-md-4
+      - if @film.movie_poster.attached?
+        =image_tag @film.movie_poster, {class: "card-img-top img-fluid", height: 400, width: "auto"}
+    .col-md-8
+      %h3
+        = image_rating(@film,false)
+        = "#{@film.format_runtime} | "
+        = @film.format_releasedate
+      %h3= "#{@film.genre_list}"
+      .film_description
+        %p= @film.description
+    %h6 Reviews
+      

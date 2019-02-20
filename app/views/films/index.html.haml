@@ -1,6 +1,5 @@
-%h2 Catalog
-
 .container
+  %h2 Catalog
   .row
     - @films.each do |film|
       .col-12.col-sm-6.col-md-4
@@ -12,8 +11,7 @@
           .card-body
             %h4.card-title= "#{film.title} (#{film.year})"
             %h5.card-subtitle
-              =image_rating(film)
+              =image_rating(film,true)
               ="#{film.format_runtime} - #{film.genre_list}"
-            -# %p.card-text= film.description
             .text-center
               = link_to "More about #{film.title}", film_path(film), class: "btn btn-secondary"
