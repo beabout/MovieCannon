@@ -1,13 +1,19 @@
 %h2 Catalog
-%h3 Display all films in the catalog here, boostrap-card format
 
-.row
-  .col-sm-6
-    .card.mb-4
-      =image_tag "btsgodfater.jpg"
-      .card-body
-      %h3.card-title Movie title
-      %h5.card-subtitle Movie genres
-      %p.card-text Movie rating
-      %br hey
-      = link_to "More info", film_path(1), class: "btn btn-primary"
+.container
+  .row
+    - @films.each do |film|
+      .col-12.col-sm-6.col-md-4
+        .card.mb-4
+          - if film.movie_poster.attached?
+            =image_tag film.movie_poster, {class: "card-img-top img-fluid", height: 500, width: "auto"}
+          - else
+            =image_tag "Empirestrikesback.jpg", {class: "card-img-top", height: 500, width: "auto"}
+          .card-body
+            %h4.card-title= "#{film.title} (#{film.year})"
+            %h5.card-subtitle
+              =image_rating(film)
+              = "#{film.format_runtime} - #{film.genre_list}"
+            %p.card-text= film.description
+            .text-center
+              = link_to "More about #{film.title}", film_path(film), class: "btn btn-secondary"

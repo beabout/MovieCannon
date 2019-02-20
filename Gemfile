@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -43,6 +43,10 @@ gem "haml-rails", "~> 1.0"
 # For admin use
 gem 'trestle'
 
+# Added 02-19-19
+# Active Storage database access for Trestle
+gem 'trestle-active_storage'
+
 # Added 02-13-19
 # For admin/user login security
 gem 'devise'
@@ -50,6 +54,13 @@ gem 'devise'
 # Added 02-15-19
 # CSS View Framework. Formatting for views with much content
 gem 'bootstrap', '~> 4.3.1'
+
+# Added 02-18-19
+# gem 'bootstrap-sass'
+
+# Added 02-19-19
+# Enables active storage variant
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
