@@ -1,5 +1,5 @@
 class FilmPerson < ApplicationRecord
-  belongs_to :people
-  belongs_to :films
-  belongs_to :person_types
+  belongs_to :person
+  belongs_to :film
+  belongs_to :person_type
 end
