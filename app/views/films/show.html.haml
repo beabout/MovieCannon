@@ -1,17 +1,18 @@
-
-.container
-  %h6= @film.title
-  .row
-    .col-12.col-md-4
-      - if @film.movie_poster.attached?
-        =image_tag @film.movie_poster, {class: "card-img-top img-fluid", height: 400, width: "auto"}
-    .col-md-8
-      %h3
-        = image_rating(@film,false)
-        = "#{@film.format_runtime} | "
-        = @film.format_releasedate
-      %h3= "#{@film.genre_list}"
-      .film_description
-        %p= @film.description
-    %h6 Reviews
-      
+- if @film.filmshot.attached?
+  .background{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.25; z-index: -999;" }
+    =image_tag @film.filmshot, {width: "90%"}
+  .container
+    %h6= @film.title
+    .row
+      .col-12.col-md-4
+        - if @film.movie_poster.attached?
+          =image_tag @film.movie_poster, {class: "card-img-top img-fluid", height: 400, width: "auto"}
+      .col-md-8
+        %h3
+          = image_rating(@film,false)
+          = "#{@film.format_runtime} | "
+          = @film.format_releasedate
+        %h3= "#{@film.genre_list}"
+        .film_description
+          %p= @film.description
+      %h6 Reviews
