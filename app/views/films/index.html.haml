@@ -13,7 +13,6 @@
             %h4.card-title= "#{film.title} (#{film.year})"
             %h5.card-subtitle
               =image_rating(film)
-              =image_tag 'PG.png', {height: 24}
               = "#{film.format_runtime} - #{film.genre_list}"
             %p.card-text= film.description
             .text-center
