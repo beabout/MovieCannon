@@ -9,40 +9,27 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    .container
-      %nav.navbar.navbar-light.bg-light
-      %navbar-brand MovieCannon
-      %li.nav-item
-        %a.nav-link= link_to "Home", root_path
-      %li.nav-item
-        %a.nav-link= link_to "Logout", destroy_admin_session_path, method: :delete
-      -# %li.nav-item
-      -#   %a.nav-link= link_to "Catalog", films_path
-      -# %li.nav-item
-      -#   %a.nav-link= link_to "MVPs", some_path
-      -# %li.nav-item
-      -#   %a.nav-link= link_to "My Revs", some_path
-      %li.nav-item
-        %a.nav-link= link_to "Admin", trestle_path
-      = yield
+    .background{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.5; z-index: -999;" }
+      = image_tag 'soundofmusic.jpg', {:width => "90%", :height => "auto", align:"middle"}
 
-
-
-
-
-
-      -# %ul.nav
-      -#   %li.navbar-brand MovieCannon
-      -#   %li.nav-item
-      -#     %a.nav-link= link_to "Home", root_path
-      -#   %li.nav-item
-      -#     %a.nav-link= link_to "Logout", destroy_admin_session_path, method: :delete
-      -#   -# %li.nav-item
-      -#   -#   %a.nav-link= link_to "Catalog", films_path
-      -#   -# %li.nav-item
-      -#   -#   %a.nav-link= link_to "MVPs", some_path
-      -#   -# %li.nav-item
-      -#   -#   %a.nav-link= link_to "My Revs", some_path
-      -#   %li.nav-item
-      -#     %a.nav-link= link_to "Admin", trestle_path
-      -#   = yield
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      %img.d-inline-block.align-top{:height => "50", :src => "assets/M.png", :width => "50"}
+      %a.navbar-brand{:href => "#"} MovieCannon
+      %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarNav.collapse.navbar-collapse
+        %ul.navbar-nav
+          %li.nav-item.active
+          = link_to root_path, class: "nav-link" do
+            Home
+            %span.sr-only (current)
+          %li.nav-item
+          = link_to destroy_admin_session_path, class: "nav-link", method: :delete do
+            Logout
+          %li.nav-item
+          = link_to trestle_path, class: "nav-link" do
+            Admin
+          -# %li.nav-item
+          -# = link_to root_path, class: "nav-link" do
+          -#   - icon: "fab fa-github"
+    = yield
