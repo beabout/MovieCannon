@@ -46,6 +46,16 @@ Trestle.resource(:films) do
         column :person_type
       end
     end
+
+    tab :classifications do
+      table film.film_classifications, admin: :film_classifications do
+        column :classification
+        column :value
+      end
+
+      concat admin_link_to("New Classification", admin: :film_classifications, action: :new, params: { film_id: film}, class: "btn btn-success")
+    end
+
   end
 
   # By default, all parameters passed to the update and create actions will be
