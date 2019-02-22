@@ -1,7 +1,15 @@
 .container
-  %h2 Catalog
+  .homepage
+    %h2 Catalog
+  .search
+    = search_form_for @q do |f|
+      Search by Title:
+      = f.search_field :title_cont
+      = f.submit
+      = puts "*************************************************************************** * *"
+
   .row
-    - @films.each do |film|
+    - @movies.each do |film|
       .col-12.col-sm-6.col-md-4
         .card.mb-4
           - if film.movie_poster.attached?

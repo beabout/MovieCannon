@@ -3,7 +3,8 @@ class FilmsController < ApplicationController
   # Display active catalog
   def index
     @films = Film.all
-
+    @q = Film.ransack(params[:q])
+    @movies = @q.result(distinct: true)
   end
 
   # Display contents (info, Persons, classifications) for a specific film

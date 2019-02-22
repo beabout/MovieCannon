@@ -13,7 +13,7 @@ body {
 }
 
 .homepage{
-  margin-top: 5rem;
+  margin-top: 3rem;
   text-align: center;
   color: #ffffff;
 }
@@ -21,6 +21,18 @@ body {
 .text-center{
   padding-top: 1rem;
 }
+
+ .search {
+   text-align: center;
+   font-size: 1rem;
+   font-weight: bold;
+   color: #9ACDD9;
+   padding: 1rem;
+  }
+
+  .search.submit {
+    color: #9ACDD9;
+  }
 
  h2{
    font-size: 5rem;

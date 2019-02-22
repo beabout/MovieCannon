@@ -32,6 +32,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
 
+# Added 2-22-19
+# Used with Active Record for public facing searches
+gem 'ransack', github: 'activerecord-hackery/ransack'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
