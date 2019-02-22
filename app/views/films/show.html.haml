@@ -15,4 +15,11 @@
         %h3= "#{@film.genre_list}"
         .film_description
           %p= @film.description
+        %ul.film-info-list
+          - @film.film_people.each do |film_person|
+            %li
+              %span.film-info-badge= "#{film_person.person.name}: #{film_person.person_type.name}"
+          - @film.film_classifications.each do |classification|
+            %li
+              %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"
       %h6 Reviews
