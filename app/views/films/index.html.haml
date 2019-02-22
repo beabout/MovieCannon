@@ -4,9 +4,8 @@
   .search
     = search_form_for @q do |f|
       Search by Title:
-      = f.search_field :title_cont
+      = f.search_field :title_or_mpaa_rating_cont
       = f.submit
-      = puts "*************************************************************************** * *"
 
   .row
     - @movies.each do |film|
