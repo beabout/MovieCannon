@@ -17,7 +17,6 @@
   -#   %textarea.form-control{:rows => "3", :input => "x", :id => "text"}
   -#   %br
   = form_for @review, url: {action: "create"} do |f|
-    -# = f.text_field :description
     = f.text_area :description, size: "80x12"
     %br
     = f.submit "submit", class: "btn btn-secondary"
