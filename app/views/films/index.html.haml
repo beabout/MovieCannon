@@ -3,8 +3,8 @@
     %h2 Catalog
   .search
     = search_form_for @q do |f|
-      Search by Title:
-      = f.search_field :title_or_mpaa_rating_cont
+      Search by Title, MPAA Rating or Description:
+      = f.search_field :title_or_mpaa_rating_or_description_cont
       = f.submit
 
   .row

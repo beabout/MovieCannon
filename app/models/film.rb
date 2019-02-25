@@ -6,6 +6,7 @@ class Film < ApplicationRecord
   # has_many :classifications, through: :film_classifications
   has_many :film_classifications
   has_many :film_people
+  has_many :reviews
   # has_many :people, through: :film_people #allows film.people
 
   validates_presence_of :title

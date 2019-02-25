@@ -23,3 +23,6 @@
             %li
               %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"
       %h6 Reviews
+        -# SOME CONTAINER CLASS HERE
+        - @film.reviews.each do |review|
+          
