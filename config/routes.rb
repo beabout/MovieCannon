@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
 
-resources :films
+resources :films do
+  resources :reviews
+end
 resources :people
-
 
 end

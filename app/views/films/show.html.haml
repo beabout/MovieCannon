@@ -22,7 +22,11 @@
           - @film.film_classifications.each do |classification|
             %li
               %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"
-      %h6 Reviews
+      %h6
+        Reviews
+        %br
         -# SOME CONTAINER CLASS HERE
-        - @film.reviews.each do |review|
-          
+        -# - @film.reviews.each do |review|
+
+        -# IF current_user ALREADY HAS Review -> "EDIT Review", ELSE -> "ADD Review"
+        = link_to "Add a Review", new_film_review_path(@film), class: "btn btn-primary"
