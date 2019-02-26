@@ -16,9 +16,14 @@
   -#   %trix-editor.form-control{:input => "x", :toolbar => "review-toolbar"}
   -#   %textarea.form-control{:rows => "3", :input => "x", :id => "text"}
   -#   %br
-  = form_for @review, url: {action: "create"} do |f|
+  = form_for @review, url: film_reviews_path(@film.id,@review) do |f|
     = f.text_area :description, size: "80x12"
+    = f.hidden_field :user_id
+    = f.hidden_field :film_id
     %br
     = f.submit "submit", class: "btn btn-secondary"
 
-    -# = link_to 'submit', [:create,current_user,@film,text], class: "btn btn-secondary"
+
+
+
+  -# = form_for @review, url: {action: "create"} do |f|
