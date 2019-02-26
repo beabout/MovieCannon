@@ -7,7 +7,14 @@ class User < ApplicationRecord
 
 
   def has_review_for_film?(film)
-
+    @bool = false
+    film.reviews.each do |review|
+      if id = review.user_id
+        @bool = true
+      end
+    end
+    return @bool
   end
 
+  # reviews.where(...).exists?
 end

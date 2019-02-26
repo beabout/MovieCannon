@@ -22,11 +22,18 @@
           - @film.film_classifications.each do |classification|
             %li
               %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"
-      %h6
-        Reviews
+    %h6 Reviews
+    %br
+    .col-md-8
+      - @film.reviews.each do |review|
+        .card.card-mb-8
+          .card-body
+            %h4.card-title= "#{review.user.email}'s Review"
+            %h5.card-subtitle= review.description
+            - if review.user == current_user
+              = link_to "Edit", film_review_path(@film), class: "btn btn-secondary"
+              = link_to "Delete", film_review_path(@film), class: "btn btn-secondary"
         %br
-        -# SOME CONTAINER CLASS HERE
-        -# - @film.reviews.each do |review|
-
-        -# IF current_user ALREADY HAS Review -> "EDIT Review", ELSE -> "ADD Review"
+      %br
+      - if current_user.has_review_for_film?(@film) == false
         = link_to "Add a Review", new_film_review_path(@film), class: "btn btn-primary"

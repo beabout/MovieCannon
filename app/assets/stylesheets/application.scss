@@ -51,8 +51,6 @@ body {
    font-style: italic;
  }
 
-
-
  .card-columns {
    @include media-breakpoint-only(lg) {
      column-count: 4;
@@ -73,6 +71,16 @@ body {
    border-bottom-right-radius: 1rem;
  }
 
+ .card-text{
+   padding-top: 0.7rem;
+   font-size: 0.7rem;
+ }
+
+ .card-title{
+   color: #168679;
+   font-weight: bold;
+   font-style: italic;
+ }
 
 .field{
   text-align: center;
@@ -85,17 +93,6 @@ body {
 .background{
   text-align: center;
   background-repeat:repeat;
-}
-
-.card-text{
-  padding-top: 0.7rem;
-  font-size: 0.7rem;
-}
-
-.card-title{
-  color: #168679;
-  font-weight: bold;
-  font-style: italic;
 }
 
 .film-info-list {
@@ -112,6 +109,10 @@ body {
 
 .review-page{
   margin-top: 5rem;
+}
+
+.white-background{
+  background-color:#ffffff;
 }
 
 // .review-text-box{
