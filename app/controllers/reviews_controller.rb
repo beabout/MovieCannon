@@ -1,21 +1,22 @@
 class ReviewsController < ApplicationController
+  before_action :load_film
+
   def index
 
   end
 
   def show
-
-  end
-
-  def edit
-
+    puts "=" * 100
   end
 
   def new
-    @film = Film.find(params[:film_id])
     @review = Review.new(user_id: current_user.id, film_id: @film.id)
     puts "=" * 100
     puts @review.inspect
+  end
+
+  def edit
+    @review = @film.reviews.find(params[:id])
   end
 
   def create
@@ -28,13 +29,30 @@ class ReviewsController < ApplicationController
     # @review = Review.create(params[:review])
   end
 
-  def delete
+  def destroy
+    @review = Review.find(params[:id])
+    puts "=" * 100
+    @review.inspect
+    @review.destroy
+    redirect_to film_path(@film)
+  end
 
+  def update
+    puts "=" * 100
+    @review = Review.find(params[:id])
+    @review.update!(review_params)
   end
 
   def review_params
     params.require(:review).permit(:description,:user_id,:film_id)
     # params[:review].permit(:user_id, :film_id, :description)
+  end
+
+
+  private
+
+  def load_film
+    @film = Film.find(params[:film_id])
   end
 
 

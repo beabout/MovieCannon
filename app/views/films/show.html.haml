@@ -31,8 +31,8 @@
             %h4.card-title= "#{review.user.email}'s Review"
             %h5.card-subtitle= review.description
             - if review.user == current_user
-              = link_to "Edit", film_review_path(@film), class: "btn btn-secondary"
-              = link_to "Delete", film_review_path(@film), class: "btn btn-secondary"
+              = link_to "Edit", edit_film_review_path(@film,review), class: "btn btn-secondary"
+              -# How will I properly render Delete action?
         %br
       %br
       - if current_user.has_review_for_film?(@film) == false
