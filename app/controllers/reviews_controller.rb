@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -20,8 +21,8 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to(film_path(@film), notice: "Review successfully created")
     else
-      flash.now[:alert] = "We had errors"
       render :new
+      flash[:alert] = "!Review must contain text!"
     end
   end
 
@@ -31,19 +32,24 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @review.update!(review_params)
-    redirect_to film_path(@film)
+    @description = params[:description]
+    @review.update(review_params)
+    if @review.save
+      redirect_to film_path(@film)
+    else
+      flash[:alert] = "!Review must contain text!"
+      render :edit
+    end
   end
 
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to film_path(@film)
+    redirect_to(film_path(@film), notice:"Review successfully deleted")
   end
 
   def review_params
     params.require(:review).permit(:description)
-    # params[:review].permit(:user_id, :film_id, :description)
   end
 
 

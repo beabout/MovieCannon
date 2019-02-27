@@ -23,7 +23,7 @@ Trestle.resource(:films) do
 
 
   active_storage_fields do
-    [:filmshot, :movie_poster]
+    [:filmshot, :movie_poster, :trailer_url]
   end
 
   # Customize the form fields shown on the new/edit views.
@@ -38,6 +38,7 @@ Trestle.resource(:films) do
       collection_select :genre_ids, Genre.all, :id, :name, {label: "Genres"}, { multiple: true }
       active_storage_field :filmshot
       active_storage_field :movie_poster
+      # text_field :trailer_url
     end
 
     tab :people do

@@ -32,9 +32,12 @@
             %h5.card-subtitle= sanitize(review.description)
             %br
             - if review.user == current_user
-              = link_to "Edit", edit_film_review_path(@film,review), class: "btn btn-secondary"
+              = link_to "Edit", edit_film_review_path(@film,review), class: "btn btn-secondary btn-sm"
             - if current_user.admin
-              = link_to "Delete", film_review_path(@film,review), method: :delete, data: { confirm: "Are you sure you want to delete #{review.user.email}'s Review"}, class: "btn btn-secondary"
+              - if review.user == current_user
+                = link_to "Delete", film_review_path(@film,review), method: :delete, data: { confirm: "Are you sure you want to delete your review?"}, class: "btn btn-secondary btn-sm"
+              - else
+                = link_to "Delete", film_review_path(@film,review), method: :delete, data: { confirm: "Are you sure you want to delete #{review.user.email}'s review?"}, class: "btn btn-secondary btn-sm"
         %br
       %br
       - if current_user.has_review_for_film?(@film) == false
