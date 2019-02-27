@@ -1,15 +1,6 @@
-.background{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.25; z-index: -999;" }
-  =image_tag "12angry.jpg", {width: "90%"}
+=content_for :background_image, '12angry.jpg'
 
 .container
   .review-page
     %h3= "Edit your Review for #{@film.title}"
-    - if flash[:alert]
-      .flash-formatting= flash.alert
-    = form_for @review, url: {action: "update"} do |f|
-      .text-box-container
-        = f.trix_editor :description, required: true, autofocus: true
-      %br
-        = f.submit "submit", class: "btn btn-secondary btn-sm"
-        = link_to "Delete", film_review_path(@film,@review), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn btn-secondary btn-sm"
-        = link_to "back to #{@film.title}", film_path(@film), class: "btn btn-secondary btn-sm"
+    = render 'form'

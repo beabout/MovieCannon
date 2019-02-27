@@ -1,23 +1,7 @@
-.background{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.25; z-index: -999;" }
-  =image_tag "12angry.jpg", {width: "90%"}
+=content_for :background_image, '12angry.jpg'
 
 .container
   .review-page
     %h3= "Write your Review for #{@film.title}"
-    - if flash[:alert]
-      .flash-formatting= flash.alert
-  = form_for @review, url: film_reviews_path(@film.id,@review) do |f|
-    .text-box-container
-      = f.trix_editor :description, required: true, autofocus: true
-      -# %trix-toolbar#review-toolbar
-      -# %trix-editor.form-control{:input => "review_description", :toolbar => "review-toolbar"}
-    %br
-    = f.submit "submit", class: "btn btn-secondary"
-    = link_to "back to #{@film.title}", film_path(@film), class: "btn btn-secondary"
+    = render 'form'
   -# Way to link_to previous page with redirect_to
-
-
-
-
-
-  -# = form_for @review, url: {action: "create"} do |f|
