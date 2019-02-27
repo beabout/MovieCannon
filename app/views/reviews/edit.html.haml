@@ -5,10 +5,12 @@
   .review-page
     %h3= "Edit your Review for #{@film.title}"
     = form_for @review, url: {action: "update"} do |f|
-      = f.text_area :description, size: "80x12"
-      = f.hidden_field :user_id
-      = f.hidden_field :film_id
-      %br
+      .text-box-container
+        = f.trix_editor :description, required: true, autofocus: true
+        -# = f.text_area :description, size: "80x12"
+        -# = f.hidden_field :user_id
+        -# = f.hidden_field :film_id
+        %br
       = f.submit "submit", class: "btn btn-secondary"
       -# = link_to "Delete", url: {action: "destroy"}, class: "btn btn-secondary"
   = link_to "Delete", film_review_path(@film,@review), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn btn-secondary"

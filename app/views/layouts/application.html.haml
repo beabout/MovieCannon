@@ -8,6 +8,10 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'trix', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'trix', 'data-turbolinks-track': 'reload'
+    -# %link{:href => "trix.css", :rel => "stylesheet", :type => "text/css"}/
+    -# %script{:src => "trix.js", :type => "text/javascript"}
   %body
     %nav.navbar.navbar-expand-lg.navbar-light.bg-light
       = image_tag "M.png", class: 'd-inline-block align-top', height: "50", width: "50"
@@ -17,15 +21,20 @@
       #navbarNav.collapse.navbar-collapse
         %ul.navbar-nav
           %li.nav-item
-            = link_to root_path, class: "nav-link" do
-              Home
-          %li.nav-item
-            = link_to destroy_admin_session_path, class: "nav-link", method: :delete do
-              Logout
-          %li.nav-item
-            = link_to trestle_path, class: "nav-link" do
-              Admin
+            = link_to "Home", root_path, class: "nav-link"
+          - if user_signed_in?
+            %li.nav-item
+              = link_to "Log out", destroy_admin_session_path, class: "nav-link", method: :delete
+          - if user_signed_in? && current_user.admin?
+            %li.nav-item
+              = link_to "Admin", trestle_path, class: "nav-link"
           -# %li.nav-item
           -# = link_to root_path, class: "nav-link" do
           -#   - icon: "fab fa-github"
+    - flash.each do |key, value|
+      .alert= value
+
     = yield
+
+
+-# current_user is only accessible in views and controllers

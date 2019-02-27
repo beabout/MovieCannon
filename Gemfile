@@ -66,6 +66,10 @@ gem 'bootstrap', '~> 4.3.1'
 # Enables active storage variant
 gem 'image_processing', '~> 1.2'
 
+# Added 02-26-19
+# JS and CSS WYSIWYG styling
+gem 'trix-rails', require: 'trix'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

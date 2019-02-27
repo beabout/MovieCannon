@@ -18,7 +18,7 @@
         %ul.film-info-list
           - @film.film_people.each do |film_person|
             %li
-              %span.film-info-badge= "#{film_person.person.name}: #{film_person.person_type.name}"
+              %span.film-info-badge= "#{film_person.person_type.name}: #{film_person.person.name}"
           - @film.film_classifications.each do |classification|
             %li
               %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"
@@ -29,7 +29,8 @@
         .card.card-mb-8
           .card-body
             %h4.card-title= "#{review.user.email}'s Review"
-            %h5.card-subtitle= review.description
+            %h5.card-subtitle= sanitize(review.description)
+            %br
             - if review.user == current_user
               = link_to "Edit", edit_film_review_path(@film,review), class: "btn btn-secondary"
               -# How will I properly render Delete action?

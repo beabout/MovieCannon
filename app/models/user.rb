@@ -5,16 +5,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  Bools = [true, false]
 
   def has_review_for_film?(film)
-    @bool = false
-    film.reviews.each do |review|
-      if id == review.user_id
-        @bool = true
-      end
-    end
-    return @bool
+    reviews.where(film: film).exists?
   end
-
-  # reviews.where(...).exists?
 end
+
+
+# @films.includes(:reviews).where(("reviews.id LIKE ?", "#{film.id}").exist?) => true)
+# reviews.includes(:review).where(("reviews.film_id LIKE ?", "#{film.id}").exists?) => true

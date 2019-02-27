@@ -1,5 +1,6 @@
 $body-bg: #168679;
 @import "bootstrap";
+@import "trix";
 
 body {
   // font-family: Sans-serif;
@@ -66,10 +67,7 @@ body {
  }
 
  .card-img-top{
-   border-top-left-radius: 1rem;
-   border-top-right-radius: 1rem;
-   border-bottom-left-radius: 1rem;
-   border-bottom-right-radius: 1rem;
+   border-radius: 0.5rem;
  }
 
  .card-text{
@@ -112,8 +110,12 @@ body {
   margin-top: 5rem;
 }
 
-.white-background{
+.text-box-container{
   background-color:#ffffff;
+  border-top-left-radius: 0.35rem;
+  border-top-right-radius: 0.35rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 // .review-text-box{

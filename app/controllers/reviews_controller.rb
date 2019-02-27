@@ -9,21 +9,30 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new(user_id: current_user.id, film_id: @film.id)
+    @review = Review.new(user: current_user, film: @film)
     puts "=" * 100
     puts @review.inspect
+  end
+
+  def create
+    @review = Review.new(user: current_user, film: @film)
+    @review.assign_attributes(review_params)
+    if @review.save
+      redirect_to(film_path(@film), notice: "Review successfully created")
+    else
+      flash.now[:alert] = "We had errors"
+      render :new
+    end
   end
 
   def edit
     @review = @film.reviews.find(params[:id])
   end
 
-  def create
-    @review = Review.create!(review_params)
-    # render plain: params[:review].inspect
-    # @review = Review.create(params[:review].merge({ user: current_user, film: @film }))
-    # @review = Review.create(user_id: params[:user_id], film_id: params[:film_id], description: params[:x])
-    # @review = Review.create(params[:review])
+  def update
+    @review = Review.find(params[:id])
+    @review.update!(review_params)
+    redirect_to film_path(@film)
   end
 
   def destroy
@@ -32,13 +41,8 @@ class ReviewsController < ApplicationController
     redirect_to film_path(@film)
   end
 
-  def update
-    @review = Review.find(params[:id])
-    @review.update!(review_params)
-  end
-
   def review_params
-    params.require(:review).permit(:description,:user_id,:film_id)
+    params.require(:review).permit(:description)
     # params[:review].permit(:user_id, :film_id, :description)
   end
 
