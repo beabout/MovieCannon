@@ -63,7 +63,7 @@ body {
  }
 
  .card{
-   border-radius: 1rem;
+   border-radius: 0.5rem;
  }
 
  .card-img-top{
@@ -92,6 +92,7 @@ body {
 .background{
   text-align: center;
   background-repeat:repeat;
+  filter:grayscale(100%);
 }
 
 .film-info-list {
@@ -112,10 +113,11 @@ body {
 
 .text-box-container{
   background-color:#ffffff;
-  border-top-left-radius: 0.35rem;
-  border-top-right-radius: 0.35rem;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  border-radius: 0.35rem;
+}
+
+.bottom-page-padding{
+  padding-bottom: 5rem;
 }
 
 // .review-text-box{
