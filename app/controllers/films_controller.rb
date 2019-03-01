@@ -17,12 +17,26 @@ class FilmsController < ApplicationController
 
   # Allow editing of a film's data
   def edit
+    @film = Film.find(params[:id])
+  end
 
+  def update
+    @film = Film.find(params[:id])
+    @film.update(film_params)
+    if @film.save
+      redirect_to films_path
+    else
+      render :edit
+    end
   end
 
   # Create new film
   def new
 
+  end
+
+  def film_params
+    params.require(:film).permit(:title, :description, :release_date, :run_time, :mpaa_rating ,:filmshot, :movie_poster, :trailer_url)
   end
 
 end

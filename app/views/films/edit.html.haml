@@ -1,0 +1,61 @@
+- if @film.filmshot.attached?
+  = content_for :background_image, rails_blob_url(@film.filmshot)
+  .container
+    %h1.white= "Edit #{@film.title}'s Details"
+    %br
+    = link_to "Back to Film", film_path(@film), class: "btn btn-secondary"
+    .film-edit-container
+      = form_for @film do |f|
+        = error_messages_for(@film)
+        %h3.white
+          Title:
+          = f.text_field :title, required: true, autofocus: true
+        %br
+        %h3.white Description:
+        = f.trix_editor :description, required: true, autofocus: true
+        %br
+        %h5.white
+          MPAA Rating:
+          = f.select :mpaa_rating, Film::MPAARatings
+          | Runtime (in minutes):
+          = f.text_field :run_time
+          = @film.format_runtime
+        %br
+        %h5.white
+          Release Date:
+          = f.datetime_field :release_date
+          = @film.format_releasedate
+        %br
+        %h5.white
+          Genres:
+          = f.collection_select :genre_ids, Genre.all, :id, :name, {multiple: true}
+        %br
+        %h5.white
+          Filmshot:
+          -# = f.active_storage_field :filmshot
+        %br
+        %h5.white
+          Movie Poster:
+          -# = f.active_storage_field :movie_poster
+
+        .text-center
+          = f.submit "submit changes", class: "btn btn-secondary"
+      .row
+        .col-12.col-md-4
+          - if @film.movie_poster.attached?
+            =image_tag @film.movie_poster, {class: "card-img-top img-fluid", height: 400, width: "auto"}
+        .col-md-8
+          %h3
+            = image_rating(@film,false)
+            = "#{@film.format_runtime} | "
+            = @film.format_releasedate
+          %h3= "#{@film.genre_list}"
+          .film_description
+            %p= @film.description
+          %ul.film-info-list
+            - @film.film_people.each do |film_person|
+              %li
+                %span.film-info-badge= "#{film_person.person_type.name}: #{film_person.person.name}"
+            - @film.film_classifications.each do |classification|
+              %li
+                %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"

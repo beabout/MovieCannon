@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @description = params[:description]
+    # @description = params[:description]
     @review.update(review_params)
     if @review.save
       redirect_to film_path(@film)

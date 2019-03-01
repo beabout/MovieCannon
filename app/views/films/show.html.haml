@@ -9,6 +9,9 @@
       .col-12.col-md-4
         - if @film.movie_poster.attached?
           =image_tag @film.movie_poster, {class: "card-img-top img-fluid", height: 400, width: "auto"}
+        - if current_user.admin
+          .text-center
+            = link_to "Edit #{@film.title}'s Details", edit_film_path(@film), {class: "btn btn-secondary"}
       .col-md-8
         %h3
           = image_rating(@film,false)
@@ -41,7 +44,6 @@
               - else
                 = link_to "Delete", film_review_path(@film,review), method: :delete, data: { confirm: "Are you sure you want to delete #{review.user.email}'s review?"}, class: "btn btn-secondary btn-sm"
         %br
-      %br
       - if current_user.has_review_for_film?(@film) == false
         = link_to "Add a Review", new_film_review_path(@film), class: "btn btn-secondary"
     .bottom-page-padding
