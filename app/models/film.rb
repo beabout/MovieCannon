@@ -8,7 +8,8 @@ class Film < ApplicationRecord
   has_many :film_people
   has_many :reviews
   # has_many :people, through: :film_people #allows film.people
-
+  accepts_nested_attributes_for :film_people, allow_destroy: true
+  accepts_nested_attributes_for :film_classifications, allow_destroy: true
   validates_presence_of :title
   validate :has_nationality_classification
 

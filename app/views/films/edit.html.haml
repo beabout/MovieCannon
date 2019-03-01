@@ -17,45 +17,59 @@
         %h5.white
           MPAA Rating:
           = f.select :mpaa_rating, Film::MPAARatings
-          | Runtime (in minutes):
+        %br
+        %h5.white
+          Runtime (in minutes):
           = f.text_field :run_time
           = @film.format_runtime
         %br
         %h5.white
           Release Date:
-          = f.datetime_field :release_date
+          = f.date_select :release_date
           = @film.format_releasedate
         %br
         %h5.white
           Genres:
-          = f.collection_select :genre_ids, Genre.all, :id, :name, {multiple: true}
+          = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {multiple: true, data: { select2: true } }
         %br
         %h5.white
-          Filmshot:
-          -# = f.active_storage_field :filmshot
+          Background shot:
+          = f.file_field :filmshot
         %br
         %h5.white
           Movie Poster:
-          -# = f.active_storage_field :movie_poster
+          = f.file_field :movie_poster
+        %br
+        - if @film.film_people.any?
+          = f.fields_for :film_people, @film.film_people do |fpf|
+            = fpf.collection_select :person_id, Person.all, :id, :name
+            = fpf.collection_select :person_type_id, PersonType.all, :id, :name
+            %br
+          = link_to "Add a person", film_path, class: "btn btn-secondary btn-sm"
+          -# select person from dropdown, and persontypes
+
+        .row
+          %ul.film-info-list
+            -# - form_for @film.film_people.each do |film_person|
+            -#   %li
+            -#     %span.film-info-badge
+            -#       ="#{film_person.person_type.name}"
+            -#       film_person.text_field :film_people
+            -# - form_for @film.film_classifications do |classification|
+            -#   %li
+            -#     %span.film-info-badge
+            -#       ="#{classification.classification.name}"
+            -#       classification.text_field :film_classifications
+
+        -#
+        -# .row
+        -#   %ul.film-info-list
+        -#     - @film.film_people.each do |film_person|
+        -#       %li
+        -#         %span.film-info-badge= "#{film_person.person_type.name}: #{film_person.person.name}"
+        -#     - @film.film_classifications.each do |classification|
+        -#       %li
+        -#         %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"
 
         .text-center
           = f.submit "submit changes", class: "btn btn-secondary"
-      .row
-        .col-12.col-md-4
-          - if @film.movie_poster.attached?
-            =image_tag @film.movie_poster, {class: "card-img-top img-fluid", height: 400, width: "auto"}
-        .col-md-8
-          %h3
-            = image_rating(@film,false)
-            = "#{@film.format_runtime} | "
-            = @film.format_releasedate
-          %h3= "#{@film.genre_list}"
-          .film_description
-            %p= @film.description
-          %ul.film-info-list
-            - @film.film_people.each do |film_person|
-              %li
-                %span.film-info-badge= "#{film_person.person_type.name}: #{film_person.person.name}"
-            - @film.film_classifications.each do |classification|
-              %li
-                %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"

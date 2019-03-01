@@ -24,7 +24,7 @@ class FilmsController < ApplicationController
     @film = Film.find(params[:id])
     @film.update(film_params)
     if @film.save
-      redirect_to films_path
+      redirect_to film_path
     else
       render :edit
     end

@@ -19,7 +19,7 @@
           = @film.format_releasedate
         %h3= "#{@film.genre_list}"
         .film_description
-          %p= @film.description
+          %p= sanitize(@film.description) # Removes HTML tags
         %ul.film-info-list
           - @film.film_people.each do |film_person|
             %li
