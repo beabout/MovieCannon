@@ -13,11 +13,13 @@
           .text-center
             = link_to "Edit #{@film.title}'s Details", edit_film_path(@film), {class: "btn btn-secondary"}
       .col-md-8
-        %h3
-          = image_rating(@film,false)
-          = "#{@film.format_runtime} | "
-          = @film.format_releasedate
-        %h3= "#{@film.genre_list}"
+        .card.d-inline-block
+          .card-body.p-2
+            %h3
+              = image_rating(@film,false)
+              = "#{@film.format_runtime} | "
+              = @film.format_releasedate
+        %h3.white= "#{@film.genre_list}"
         .film_description
           %p= sanitize(@film.description) # Removes HTML tags
         %ul.film-info-list

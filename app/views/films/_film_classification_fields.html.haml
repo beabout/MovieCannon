@@ -1,0 +1,6 @@
+.nested_fields
+  .field
+    = f.collection_select :classification_id, Classification.all, :id, :name
+  .field
+    = f.text_field :value
+  = link_to_remove_association "remove classification", f
