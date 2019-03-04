@@ -40,14 +40,14 @@
     = f.fields_for :film_people do |fp|
       = render 'film_person_fields', f: fp
     .links
-      = link_to_add_association 'add person', f, :film_people # OR :people <-- people association doesn't exist on film
+      = link_to_add_association 'add person', f, :film_people, class: "btn btn-secondary btn-sm" # OR :people <-- people association doesn't exist on film
 
   %h3 Classifications
   #classifications
     = f.fields_for :film_classifications do |fc|
       = render 'film_classification_fields', f: fc
     .links
-      = link_to_add_association 'add classification', f, :film_classifications # OR :classifications <-- classifications association doesn't exist on film
+      = link_to_add_association 'add classification', f, :film_classifications, class: "btn btn-secondary btn-sm" # OR :classifications <-- classifications association doesn't exist on film
 
 
   = f.submit
