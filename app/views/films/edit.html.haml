@@ -5,71 +5,62 @@
     %br
     = link_to "Back to Film", film_path(@film), class: "btn btn-secondary"
     .film-edit-container
-      = form_for @film do |f|
-        = error_messages_for(@film)
-        %h3.white
-          Title:
-          = f.text_field :title, required: true, autofocus: true
-        %br
-        %h3.white Description:
-        = f.trix_editor :description, required: true, autofocus: true
-        %br
-        %h5.white
-          MPAA Rating:
-          = f.select :mpaa_rating, Film::MPAARatings
-        %br
-        %h5.white
-          Runtime (in minutes):
-          = f.text_field :run_time
-          = @film.format_runtime
-        %br
-        %h5.white
-          Release Date:
-          = f.date_select :release_date
-          = @film.format_releasedate
-        %br
-        %h5.white
-          Genres:
-          = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {multiple: true, data: { select2: true } }
-        %br
-        %h5.white
-          Background shot:
-          = f.file_field :filmshot
-        %br
-        %h5.white
-          Movie Poster:
-          = f.file_field :movie_poster
-        %br
-        - if @film.film_people.any?
-          = f.fields_for :film_people, @film.film_people do |fpf|
-            = fpf.collection_select :person_id, Person.all, :id, :name
-            = fpf.collection_select :person_type_id, PersonType.all, :id, :name
-            %br
-          = link_to "Add a person", film_path, class: "btn btn-secondary btn-sm"
-          -# select person from dropdown, and persontypes
-
-        .row
-          %ul.film-info-list
-            -# - form_for @film.film_people.each do |film_person|
-            -#   %li
-            -#     %span.film-info-badge
-            -#       ="#{film_person.person_type.name}"
-            -#       film_person.text_field :film_people
-            -# - form_for @film.film_classifications do |classification|
-            -#   %li
-            -#     %span.film-info-badge
-            -#       ="#{classification.classification.name}"
-            -#       classification.text_field :film_classifications
-
-        -#
-        -# .row
-        -#   %ul.film-info-list
-        -#     - @film.film_people.each do |film_person|
-        -#       %li
-        -#         %span.film-info-badge= "#{film_person.person_type.name}: #{film_person.person.name}"
-        -#     - @film.film_classifications.each do |classification|
-        -#       %li
-        -#         %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"
-
-        .text-center
-          = f.submit "submit changes", class: "btn btn-secondary"
+      = render 'form'
+      -# = form_for @film do |f|
+      -#   = error_messages_for(@film)
+      -#   %h3.white
+      -#     = f.label :title
+      -#     = f.text_field :title, required: true, autofocus: true
+      -#   %br
+      -#   %h3.white
+      -#     = f.label :description
+      -#     = f.trix_editor :description, required: true, autofocus: true
+      -#   %br
+      -#   %h5.white
+      -#     = f.label :mpaa_rating
+      -#     = f.select :mpaa_rating, Film::MPAARatings
+      -#   %br
+      -#   %h5.white
+      -#     = f.label :run_time
+      -#     = f.text_field :run_time
+      -#     = @film.format_runtime
+      -#   %br
+      -#   %h5.white
+      -#     = f.label :release_date
+      -#     = f.date_select :release_date
+      -#     = @film.format_releasedate
+      -#   %br
+      -#   %h5.white
+      -#     = f.label :genres
+      -#     = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {multiple: true, data: { select2: true } }
+      -#   %br
+      -#   %h5.white
+      -#     = f.label :filmshot
+      -#     = f.file_field :filmshot
+      -#   %br
+      -#   %h5.white
+      -#     = f.label :movie_poster
+      -#     = f.file_field :movie_poster
+      -#   %br
+      -#   - if @film.film_people.any?
+      -#     = f.fields_for :film_people, @film.film_people do |fpf|
+      -#       = fpf.collection_select :person_id, Person.all, :id, :name
+      -#       = fpf.collection_select :person_type_id, PersonType.all, :id, :name
+      -#       = link_to_remove_association "Remove Person", f, class: "btn btn-secondary btn-sm"
+      -#         -# = render 'person_fields', f: fpf
+      -#       %br
+      -#       = link_to_add_association "Add Person", f, :film_people, class: "btn btn-secondary btn-sm"
+      -#
+      -#   %br
+      -#   %br
+      -#   - if @film.film_classifications.any?
+      -#     = f.fields_for :film_classifications, @film.film_classifications do |fcf|
+      -#       = fcf.collection_select :classification_id, Classification.all, :id, :name
+      -#       = fcf.text_field :value
+      -#       = link_to_remove_association "Remove Classification", f, class: "btn btn-secondary btn-sm"
+      -#       -# = render 'classification_fields', f: fcf
+      -#       %br
+      -#       = link_to_add_association "Add Classification", f, :film_classifications, class: "btn btn-secondary btn-sm"
+      -#
+      -#   .text-center
+      -#     = f.submit "submit changes", class: "btn btn-secondary"

@@ -1,0 +1,53 @@
+= form_for @film do |f|
+  = error_messages_for(@film)
+
+  .field
+    = f.label :title
+    = f.text_field :title, required: true, autofocus: true
+  %br
+  .field
+    = f.label :description
+    = f.trix_editor :description, required: true, autofocus: true
+  %br
+  .field
+    = f.label :mpaa_rating
+    = f.select :mpaa_rating, Film::MPAARatings
+  %br
+  .field
+    = f.label :run_time
+    = f.text_field :run_time
+    = @film.format_runtime
+  %br
+  .field
+    = f.label :release_date
+    = f.date_select :release_date
+    = @film.format_releasedate
+  %br
+  .field
+    = f.label :genres
+    = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {multiple: true, data: { select2: true } }
+  %br
+  .field
+    = f.label :filmshot
+    = f.file_field :filmshot
+  %br
+  .field
+    = f.label :movie_poster
+    = f.file_field :movie_poster
+
+  %h3 People
+  #people
+    = f.fields_for :film_people do |fp|
+      = render 'film_person_fields', f: fp
+    .links
+      = link_to_add_association 'add person', f, :film_people # OR :people <-- people association doesn't exist on film
+
+  %h3 Classifications
+  #classifications
+    = f.fields_for :film_classifications do |fc|
+      = render 'film_classification_fields', f: fc
+    .links
+      = link_to_add_association 'add classification', f, :film_classifications # OR :classifications <-- classifications association doesn't exist on film
+
+
+  = f.submit
