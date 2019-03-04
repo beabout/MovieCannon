@@ -1,0 +1,6 @@
+=content_for :background_image, '12angry.jpg'
+
+.container
+  .review-page
+    %h3= "Edit your Review for #{@film.title}"
+    = render 'form'

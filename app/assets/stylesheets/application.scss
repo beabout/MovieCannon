@@ -1,36 +1,63 @@
 $body-bg: #168679;
 @import "bootstrap";
+@import "trix";
 
 body {
   // font-family: Sans-serif;
   // background-image: asset-url("btsgodfater.jpg");
+  // background-repeat: repeat;
+}
+
+.flash-formatting{
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  font-style: italic;
+}
+
+.film_description{
+  color: #ffffff;
+  padding-right: 6rem;
 }
 
 .homepage{
-  margin-top: 5rem;
+  margin-top: 3rem;
+  text-align: center;
+  color: #ffffff;
 }
 
-.card{
-  border-radius: 1rem;
+.text-center{
+  padding-top: 1rem;
+  text-align: center;
 }
 
-.card-img-top{
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-}
+ .search {
+   text-align: center;
+   font-size: 1rem;
+   font-weight: bold;
+   color: #9ACDD9;
+   padding: 1rem;
+  }
 
+  .search.submit {
+    color: #9ACDD9;
+  }
 
  h2{
-   color: #ffffff;
    font-size: 5rem;
-   text-align: center;
-   padding: 2rem;
+   padding: 1rem;
  }
 
  h3{
-   color: #ffffff;
    font-size: 2rem;
-   text-align: center;
+ }
+
+ h6{
+   color: #ffffff;
+   padding-top: 1rem;
+   padding-left: 1rem;
+   font-size: 6rem;
+   font-style: italic;
  }
 
  .card-columns {
@@ -40,6 +67,25 @@ body {
    @include media-breakpoint-only(xl) {
      column-count: 5;
    }
+ }
+
+ .card{
+   border-radius: 0.5rem;
+ }
+
+ .card-img-top{
+   border-radius: 0.5rem;
+ }
+
+ .card-text{
+   padding-top: 0.7rem;
+   font-size: 0.7rem;
+ }
+
+ .card-title{
+   color: #168679;
+   font-weight: bold;
+   font-style: italic;
  }
 
 .field{
@@ -52,15 +98,63 @@ body {
 
 .background{
   text-align: center;
+  background-repeat:repeat;
+  filter:grayscale(100%);
 }
 
-.card-text{
-  padding-top: 0.7rem;
-  font-size: 0.7rem;
+.film-info-list {
+  padding-left: 0;
+  list-style: none;
 }
 
-.card-title{
+.film-info-badge{
+  border-radius: 0.5rem;
+  background-color: #ffffff;
   color: #168679;
-  font-weight: bold;
-  font-style: italic;
+  padding: 4px 8px;
 }
+
+.review-page{
+  margin-top: 5rem;
+}
+
+.btn-secondary{
+  background-color: #ffffff;
+  color: #168679;
+  border-radius: 1rem;
+}
+
+.btn-sm{
+  border-radius: 1rem;
+}
+
+.btn-lg{
+  border-radius: 2rem;
+}
+
+trix-editor {
+  background-color: white;
+}
+
+trix-toolbar {
+  .trix-button {
+    background-color: white;
+  }
+}
+
+.bottom-page-padding{
+  padding-bottom: 5rem;
+}
+
+.film-edit-container{
+  padding: 1rem;
+}
+
+.white{
+  color: white;
+}
+
+
+// .review-text-box{
+//   margin-right: 15rem;
+// }

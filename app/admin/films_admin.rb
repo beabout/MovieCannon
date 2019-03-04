@@ -23,20 +23,40 @@ Trestle.resource(:films) do
 
 
   active_storage_fields do
-    [:filmshot, :movie_poster]
+    [:filmshot, :movie_poster, :trailer_url]
   end
 
   # Customize the form fields shown on the new/edit views.
   #
   form do |film|
-    text_field :title
-    text_area :description
-    datetime_field :release_date
-    text_field :run_time
-    select :mpaa_rating, Film::MPAARatings
-    collection_select :genre_ids, Genre.all, :id, :name, {label: "Genres"}, { multiple: true }
-    active_storage_field :filmshot
-    active_storage_field :movie_poster
+    tab :details do
+      text_field :title
+      text_area :description
+      datetime_field :release_date
+      text_field :run_time
+      select :mpaa_rating, Film::MPAARatings
+      collection_select :genre_ids, Genre.all, :id, :name, {label: "Genres"}, { multiple: true }
+      active_storage_field :filmshot
+      active_storage_field :movie_poster
+      # text_field :trailer_url
+    end
+
+    tab :people do
+      table film.film_people, admin: :film_people do
+        column :person
+        column :person_type
+      end
+    end
+
+    tab :classifications do
+      table film.film_classifications, admin: :film_classifications do
+        column :classification
+        column :value
+      end
+
+      concat admin_link_to("New Classification", admin: :film_classifications, action: :new, params: { film_id: film}, class: "btn btn-success")
+    end
+
   end
 
   # By default, all parameters passed to the update and create actions will be

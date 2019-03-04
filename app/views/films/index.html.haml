@@ -1,8 +1,14 @@
-%h2 Catalog
-
 .container
+  .homepage
+    %h2 Catalog
+  .search
+    = search_form_for @q do |f|
+      Search by Title, MPAA Rating or Description:
+      = f.search_field :title_or_mpaa_rating_or_description_cont
+      = f.submit
+
   .row
-    - @films.each do |film|
+    - @movies.each do |film|
       .col-12.col-sm-6.col-md-4
         .card.mb-4
           - if film.movie_poster.attached?
@@ -12,8 +18,7 @@
           .card-body
             %h4.card-title= "#{film.title} (#{film.year})"
             %h5.card-subtitle
-              =image_rating(film)
-              = "#{film.format_runtime} - #{film.genre_list}"
-            %p.card-text= film.description
+              =image_rating(film,true)
+              ="#{film.format_runtime} - #{film.genre_list}"
             .text-center
               = link_to "More about #{film.title}", film_path(film), class: "btn btn-secondary"

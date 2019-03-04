@@ -1,3 +1,49 @@
-%h2= @film.title
-%h3= "#{@film.format_releasedate} | #{@film.format_runtime}"
-%p= @film.description
+- if @film.filmshot.attached?
+  = content_for :background_image, rails_blob_url(@film.filmshot)
+  .container
+    %br
+    = link_to "Back to Catalog", films_path, class: "btn btn-secondary"
+
+    %h6= @film.title
+    .row
+      .col-12.col-md-4
+        - if @film.movie_poster.attached?
+          =image_tag @film.movie_poster, {class: "card-img-top img-fluid", height: 400, width: "auto"}
+        - if current_user.admin
+          .text-center
+            = link_to "Edit #{@film.title}'s Details", edit_film_path(@film), {class: "btn btn-secondary"}
+      .col-md-8
+        %h3
+          = image_rating(@film,false)
+          = "#{@film.format_runtime} | "
+          = @film.format_releasedate
+        %h3= "#{@film.genre_list}"
+        .film_description
+          %p= sanitize(@film.description) # Removes HTML tags
+        %ul.film-info-list
+          - @film.film_people.each do |film_person|
+            %li
+              %span.film-info-badge= "#{film_person.person_type.name}: #{film_person.person.name}"
+          - @film.film_classifications.each do |classification|
+            %li
+              %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"
+    %h6 Reviews
+    %br
+    .col-md-8
+      - @film.reviews.each do |review|
+        .card.card-mb-8
+          .card-body
+            %h4.card-title= "#{review.user.email}'s Review"
+            %h5.card-subtitle= sanitize(review.description)
+            %br
+            - if review.user == current_user
+              = link_to "Edit", edit_film_review_path(@film,review), class: "btn btn-secondary btn-sm"
+            - if current_user.admin
+              - if review.user == current_user
+                = link_to "Delete", film_review_path(@film,review), method: :delete, data: { confirm: "Are you sure you want to delete your review?"}, class: "btn btn-secondary btn-sm"
+              - else
+                = link_to "Delete", film_review_path(@film,review), method: :delete, data: { confirm: "Are you sure you want to delete #{review.user.email}'s review?"}, class: "btn btn-secondary btn-sm"
+        %br
+      - if current_user.has_review_for_film?(@film) == false
+        = link_to "Add a Review", new_film_review_path(@film), class: "btn btn-secondary"
+    .bottom-page-padding

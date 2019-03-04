@@ -1,28 +1,19 @@
-Trestle.resource(:people) do
+Trestle.resource(:classifications) do
   menu do
-    item :people, icon: "fa fa-user"
+    item :classifications, icon: "fa fa-book"
   end
 
   # Customize the table columns shown on the index view.
   #
   table do
     column :name
-    column :birthdate
-    # column :type_id
     actions
-  end
-
-  active_storage_fields do
-    [:headshot]
   end
 
   # Customize the form fields shown on the new/edit views.
   #
-  form do |person|
+  form do |classification|
     text_field :name
-    datetime_field :birthdate
-    # text_field :type_id
-    active_storage_field :headshot
   end
 
   # By default, all parameters passed to the update and create actions will be
