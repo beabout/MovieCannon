@@ -1,31 +1,36 @@
 = form_for @film do |f|
   = error_messages_for(@film)
 
-  .field
-    = f.label :title
-    = f.text_field :title, required: true, autofocus: true
+  .form-row
+    .col.white
+      = f.label :title
+    .col
+      = f.text_field :title, required: true, autofocus: true
   %br
-  .field
-    = f.label :description
+    .white
+      = f.label :description
     = f.trix_editor :description, required: true, autofocus: true
   %br
-  .field
-    = f.label :mpaa_rating
-    = f.select :mpaa_rating, Film::MPAARatings
+    .form-row
+      .col.white
+        = f.label :mpaa_rating
+      .col
+        = f.select :mpaa_rating, Film::MPAARatings
   %br
-  .field
-    = f.label :run_time
-    = f.text_field :run_time
-    = @film.format_runtime
+  .form-row
+    .form-group.col-md-6.white
+      = f.label :run_time
+      = f.text_field :run_time
+      = @film.format_runtime
+    .form-group.col-md-6.white
+      = f.label :release_date
+      = f.date_select :release_date
+      = @film.format_releasedate
   %br
-  .field
-    = f.label :release_date
-    = f.date_select :release_date
-    = @film.format_releasedate
-  %br
-  .field
+  .form-group.white
     = f.label :genres
-    = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {multiple: true, data: { select2: true } }
+    .select
+      = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {multiple: true, data: { select2: true } }
   %br
   .field
     = f.label :filmshot
