@@ -14,6 +14,15 @@
     .form-row
       .col.white
         = f.label :mpaa_rating
+        %select.js-example-basic-single{:name => "MPAA Rating"}
+          %option{:value => "G"} G
+          \...
+          %option{:value => "PG"} PG
+          \...
+          %option{:value => "PG13"} PG13
+          \...
+          %option{:value => "R"} R
+
       .col
         = f.select :mpaa_rating, Film::MPAARatings
   %br
@@ -31,6 +40,18 @@
     = f.label :genres
     .select
       = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {multiple: true, data: { select2: true } }
+
+    .select2.select2-container.select2-container--default.select2-container--below.select2-container--focus
+      .selection
+        .select2-selection.select2-selection--multiple{:role => "combobox"}
+          - @genres.each do |genre|
+            %option.black{:value => "#{genre.name}"} #{genre.name}
+
+        -# %select.js-example-basic-multiple.form-control.select2-hidden-accessible{:name => "Genres"}
+          - @genres.each do |genre|
+            %option{:value => "#{genre.name}"} #{genre.name}
+
+
   %br
   .field
     = f.label :filmshot

@@ -18,6 +18,7 @@ class FilmsController < ApplicationController
   # Allow editing of a film's data
   def edit
     @film = Film.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
