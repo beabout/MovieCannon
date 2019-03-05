@@ -33,7 +33,6 @@ class FilmsController < ApplicationController
 
   # Create new film
   def new
-
   end
 
   def film_params

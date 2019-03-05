@@ -10,12 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 //= require trix
 //= require cocoon
+//= require select2/dist/js/select2
+
+$( "#dropdown").select2({
+  theme: "bootstrap"
+});
 
 $(document).ready(function() {
   $('.js-example-basic-single').select2();

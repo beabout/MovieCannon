@@ -1,4 +1,4 @@
 .nested-fields
   = f.collection_select :person_id, Person.all, :id, :name
   = f.collection_select :person_type_id, PersonType.all, :id, :name
-  = link_to_remove_association "Remove Person", f, class: "btn btn-secondary btn-sm"
+  = link_to_remove_association "Remove Person", f, class: "btn btn-secondary btn-sm", data: {confirm: "Are you sure you want to remove this person?"}

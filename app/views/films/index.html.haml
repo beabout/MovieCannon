@@ -22,3 +22,6 @@
               ="#{film.format_runtime} - #{film.genre_list}"
             .text-center
               = link_to "More about #{film.title}", film_path(film), class: "btn btn-secondary"
+  .text-center
+    - if user_signed_in?
+      = link_to "Add New Film", new_film_path, class: "btn btn-secondary"

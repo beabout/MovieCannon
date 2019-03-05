@@ -2,29 +2,19 @@
   = error_messages_for(@film)
 
   .form-row
-    .col.white
-      = f.label :title
-    .col
-      = f.text_field :title, required: true, autofocus: true
+    .form-group.col-md-6.white
+      .form-control
+        = f.label :title
+        = f.text_field :title, required: true, autofocus: true
   %br
     .white
       = f.label :description
     = f.trix_editor :description, required: true, autofocus: true
   %br
-    .form-row
-      .col.white
-        = f.label :mpaa_rating
-        %select.js-example-basic-single{:name => "MPAA Rating"}
-          %option{:value => "G"} G
-          \...
-          %option{:value => "PG"} PG
-          \...
-          %option{:value => "PG13"} PG13
-          \...
-          %option{:value => "R"} R
-
-      .col
-        = f.select :mpaa_rating, Film::MPAARatings
+  .form-row
+    .col.white
+      = f.label :mpaa_rating
+      = f.select :mpaa_rating, Film::MPAARatings, {}, class: 'js-example-basic-single'
   %br
   .form-row
     .form-group.col-md-6.white
@@ -38,19 +28,12 @@
   %br
   .form-group.white
     = f.label :genres
-    .select
-      = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {multiple: true, data: { select2: true } }
-
-    .select2.select2-container.select2-container--default.select2-container--below.select2-container--focus
-      .selection
-        .select2-selection.select2-selection--multiple{:role => "combobox"}
-          - @genres.each do |genre|
-            %option.black{:value => "#{genre.name}"} #{genre.name}
-
-        -# %select.js-example-basic-multiple.form-control.select2-hidden-accessible{:name => "Genres"}
-          - @genres.each do |genre|
-            %option{:value => "#{genre.name}"} #{genre.name}
-
+    = f.collection_select :genre_ids, Genre.all, :id, :name, {}, class: 'js-example-basic-multiple'
+    -#
+    -# %select.js-example-basic-multiple{:name => "Genres", :multiple => "multiple"}
+    -#   - @genres.each do |genre|
+    -#     %option{:value => "#{genre.name}"} #{genre.name}
+    -#
 
   %br
   .field
@@ -60,20 +43,20 @@
   .field
     = f.label :movie_poster
     = f.file_field :movie_poster
-
+  %br
   %h3 People
   #people
     = f.fields_for :film_people do |fp|
       = render 'film_person_fields', f: fp
     .links
       = link_to_add_association 'add person', f, :film_people, class: "btn btn-secondary btn-sm" # OR :people <-- people association doesn't exist on film
-
+  %br
   %h3 Classifications
   #classifications
     = f.fields_for :film_classifications do |fc|
       = render 'film_classification_fields', f: fc
     .links
       = link_to_add_association 'add classification', f, :film_classifications, class: "btn btn-secondary btn-sm" # OR :classifications <-- classifications association doesn't exist on film
-
-
-  = f.submit
+  %br
+  .btn.btn-secondary
+    = f.submit
