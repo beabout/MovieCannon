@@ -34,7 +34,7 @@
       .alert= value
 
     - if content_for? :background_image
-      .background{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.5; z-index: -999;" }
+      .background{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.3; z-index: -999;" }
         = image_tag content_for(:background_image), {:width => "90%", :height => "auto", align:"middle"}
 
     = yield
