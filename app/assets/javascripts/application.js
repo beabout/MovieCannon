@@ -27,8 +27,18 @@ document.addEventListener("turbolinks:load", function() {
   $('.js-example-basic-single').select2();
   $('.js-example-basic-multiple').select2();
 
-  $("[data-add-person]").on('click', function(e) {
-      $(".person-name-select").hide();
-      $(".person-name-text").show();
+  $("#people").delegate("[data-add-person]", 'click', function(e) {
+    console.log(this);
+    var context = $(this).parents(".nested-fields");
+    $(".person-name-select", context).hide();
+    $(".person-name-text", context).show();
+  })
+
+  $("[data-add-classification]").on('click', function(e) {
+    var context = $(this).parents(".nested-fields");
+    $(".classification-name-select", context).hide();
+    $(".classification-name-text", context).show();
   })
 });
+
+// .prop('disabled', true)
