@@ -70,9 +70,13 @@ gem 'image_processing', '~> 1.2'
 # JS and CSS WYSIWYG styling
 gem 'trix-rails', require: 'trix'
 
-# Added 02-04-19
-# Nested Form handling 
+# Added 03-04-19
+# Nested Form handling
 gem 'cocoon'
+
+# Added 03-05-19
+
+gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

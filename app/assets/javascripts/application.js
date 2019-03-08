@@ -10,9 +10,35 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 //= require trix
 //= require cocoon
+//= require select2/dist/js/select2
+
+$( "#dropdown").select2({
+  theme: "bootstrap"
+});
+
+document.addEventListener("turbolinks:load", function() {
+  $('.js-example-basic-single').select2();
+  $('.js-example-basic-multiple').select2();
+
+  $("#people").delegate("[data-add-person]", 'click', function(e) {
+    console.log(this);
+    var context = $(this).parents(".nested-fields");
+    $(".person-name-select", context).hide();
+    $(".person-name-text", context).show();
+  })
+
+  $("[data-add-classification]").on('click', function(e) {
+    var context = $(this).parents(".nested-fields");
+    $(".classification-name-select", context).hide();
+    $(".classification-name-text", context).show();
+  })
+});
+
+// .prop('disabled', true)

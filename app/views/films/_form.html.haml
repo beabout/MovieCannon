@@ -1,53 +1,64 @@
 = form_for @film do |f|
   = error_messages_for(@film)
 
-  .field
-    = f.label :title
-    = f.text_field :title, required: true, autofocus: true
-  %br
-  .field
-    = f.label :description
-    = f.trix_editor :description, required: true, autofocus: true
-  %br
-  .field
-    = f.label :mpaa_rating
-    = f.select :mpaa_rating, Film::MPAARatings
-  %br
-  .field
-    = f.label :run_time
-    = f.text_field :run_time
-    = @film.format_runtime
-  %br
-  .field
-    = f.label :release_date
-    = f.date_select :release_date
-    = @film.format_releasedate
-  %br
-  .field
-    = f.label :genres
-    = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {multiple: true, data: { select2: true } }
-  %br
-  .field
-    = f.label :filmshot
-    = f.file_field :filmshot
-  %br
-  .field
-    = f.label :movie_poster
-    = f.file_field :movie_poster
+  .form-row.form-group.align-items-center
+    .col-md-6.white
+      = f.label :title
+      = f.text_field :title, required: true, autofocus: true, class: 'form-control'
+    .col-md-2.white
+      = f.label :mpaa_rating
+      = f.select :mpaa_rating, Film::MPAARatings, {}, class: 'form-control js-example-basic-single'
+    .col-md-3.white
+      = f.label :release_date
+      = "(#{@film.format_releasedate})"
+      .form-row
+        = f.date_select :release_date
+  .form-group.mb-5
+    .white
+      = f.label :description
+    .form-row
+      = f.trix_editor :description, required: true, autofocus: true
 
-  %h3 People
-  #people
-    = f.fields_for :film_people do |fp|
-      = render 'film_person_fields', f: fp
-    .links
-      = link_to_add_association 'add person', f, :film_people # OR :people <-- people association doesn't exist on film
+  .form-group.form-row
+    .col-md-4.white
+      = f.label :run_time
+      = "(#{@film.format_runtime.capitalize})"
+      = f.text_field :run_time, class: 'form-control'
+    .col-md-8
+      .white
+        = f.label :genres
+      = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {:multiple => true, class: 'black js-example-basic-multiple form-control'}
 
-  %h3 Classifications
-  #classifications
-    = f.fields_for :film_classifications do |fc|
-      = render 'film_classification_fields', f: fc
-    .links
-      = link_to_add_association 'add classification', f, :film_classifications # OR :classifications <-- classifications association doesn't exist on film
+  %br
+  .form-row
+    .field.col-md-6.white
+      = f.label :filmshot
+      %br
+      = f.file_field :filmshot
+  %br
+  .form-row
+    .field.col-md-6.white
+      = f.label :movie_poster
+      %br
+      = f.file_field :movie_poster
 
-
-  = f.submit
+  %br
+  %br
+  .form-row
+    .col-md-6
+      %h3.white People
+      #people
+        = f.fields_for :film_people do |fp|
+          = render 'film_person_fields', f: fp
+        .links
+          = link_to_add_association 'Add New Person', f, :film_people, class: "btn btn-secondary btn-sm" # OR :people <-- people association doesn't exist on film
+    .col-md-6
+      %h3.white Classifications
+      #classifications
+        = f.fields_for :film_classifications do |fc|
+          = render 'film_classification_fields', f: fc
+        .links
+          = link_to_add_association 'Add Classification', f, :film_classifications, class: "btn btn-secondary btn-sm" # OR :classifications <-- classifications association doesn't exist on film
+  %br
+  .text-center
+    = f.submit class: "btn btn-primary btn-lg"

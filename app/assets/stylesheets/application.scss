@@ -1,6 +1,7 @@
 $body-bg: #168679;
 @import "bootstrap";
 @import "trix";
+@import "select2/dist/css/select2";
 
 body {
   // font-family: Sans-serif;
@@ -88,9 +89,6 @@ body {
    font-style: italic;
  }
 
-.field{
-  text-align: center;
-}
 
 .actions{
   text-align: center;
@@ -124,6 +122,27 @@ body {
   border-radius: 1rem;
 }
 
+.btn-primary{
+  background-color: grey;
+  border-color: grey;
+  color: #ffffff;
+  border-radius: 1rem;
+}
+
+.btn-primary:hover{
+  background-color: orange;
+  color: black;
+  border-color: lime;
+}
+
+.btn-link{
+  color: white;
+}
+
+.btn-link:hover{
+  color: orange;
+}
+
 .btn-sm{
   border-radius: 1rem;
 }
@@ -134,6 +153,10 @@ body {
 
 trix-editor {
   background-color: white;
+}
+
+text_field {
+  color: #fff;
 }
 
 trix-toolbar {
@@ -152,6 +175,14 @@ trix-toolbar {
 
 .white{
   color: white;
+}
+
+.black{
+  color: black;
+}
+
+.select-2selection__choice{
+  color: #010000;
 }
 
 // .review-text-box{

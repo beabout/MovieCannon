@@ -8,9 +8,6 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    -# = javascript_include_tag :cocoon # Might throw an error for referencing twice
-    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css", :rel => "stylesheet"}/
-    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"}
   %body
     %nav.navbar.navbar-expand-lg.navbar-light.bg-light
       = image_tag "M.png", class: 'd-inline-block align-top', height: "50", width: "50"
@@ -24,6 +21,9 @@
           - if user_signed_in?
             %li.nav-item
               = link_to "Log out", destroy_admin_session_path, class: "nav-link", method: :delete
+          - else
+            %li.nav-item
+              = link_to "Log in", new_user_session_path, class: "nav-link", method: :get
           - if user_signed_in? && current_user.admin?
             %li.nav-item
               = link_to "Admin", trestle_path, class: "nav-link"
@@ -34,10 +34,11 @@
       .alert= value
 
     - if content_for? :background_image
-      .background{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.5; z-index: -999;" }
+      .background{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.3; z-index: -999;" }
         = image_tag content_for(:background_image), {:width => "90%", :height => "auto", align:"middle"}
 
     = yield
 
+.bottom-page-padding
 
 -# current_user is only accessible in views and controllers
