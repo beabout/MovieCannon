@@ -23,10 +23,12 @@ $( "#dropdown").select2({
   theme: "bootstrap"
 });
 
-$(document).ready(function() {
+document.addEventListener("turbolinks:load", function() {
   $('.js-example-basic-single').select2();
-});
-
-$(document).ready(function() {
   $('.js-example-basic-multiple').select2();
+
+  $("[data-add-person]").on('click', function(e) {
+      $(".person-name-select").hide();
+      $(".person-name-text").show();
+  })
 });

@@ -122,6 +122,27 @@ body {
   border-radius: 1rem;
 }
 
+.btn-primary{
+  background-color: grey;
+  border-color: grey;
+  color: #ffffff;
+  border-radius: 1rem;
+}
+
+.btn-primary:hover{
+  background-color: orange;
+  color: black;
+  border-color: lime;
+}
+
+.btn-link{
+  color: white;
+}
+
+.btn-link:hover{
+  color: orange;
+}
+
 .btn-sm{
   border-radius: 1rem;
 }
@@ -163,6 +184,7 @@ trix-toolbar {
 .select-2selection__choice{
   color: #010000;
 }
+
 // .review-text-box{
 //   margin-right: 15rem;
 // }

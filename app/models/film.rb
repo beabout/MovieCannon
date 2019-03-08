@@ -11,6 +11,7 @@ class Film < ApplicationRecord
   accepts_nested_attributes_for :film_people, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :film_classifications, reject_if: :all_blank, allow_destroy: true
   validates_presence_of :title
+  validates_associated :film_people
   validate :has_nationality_classification
 
   MPAARatings = ["G", "PG", "PG13", "R"]

@@ -18,7 +18,6 @@ class FilmsController < ApplicationController
   # Allow editing of a film's data
   def edit
     @film = Film.find(params[:id])
-    @genres = Genre.all
   end
 
   def update
@@ -36,7 +35,7 @@ class FilmsController < ApplicationController
   end
 
   def film_params
-    params.require(:film).permit(:title, :description, :release_date, :run_time, :mpaa_rating ,:filmshot, :movie_poster, :trailer_url, people_attributes: [:id, :person_id, :person_type_id, :_destroy])
+    params.require(:film).permit(:title, :description, :release_date, :run_time, :mpaa_rating ,:filmshot, :movie_poster, :trailer_url, genre_ids: [], film_people_attributes: [:id, :person_type_id, :_destroy, person_attributes: [:id, :name, :birthdate]], film_classifications_attributes: [:id, :classification_id, :value, :_destroy])
   end
 
 end

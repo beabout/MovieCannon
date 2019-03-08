@@ -2,3 +2,4 @@
   = f.collection_select :classification_id, Classification.all, :id, :name
   = f.text_field :value
   = link_to_remove_association "remove classification", f, class: "btn btn-secondary btn-sm", data: {confirm: "Are you sure you want to remove this classification?"}
+%br
