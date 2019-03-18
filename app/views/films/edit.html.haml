@@ -1,8 +1,8 @@
-- if @film.filmshot.attached?
-  = content_for :background_image, rails_blob_url(@film.filmshot)
-  .container
-    %h1.white= "Edit #{@film.title}'s Details"
-    %br
-    = link_to "Back to Film", film_path(@film), class: "btn btn-secondary"
-    .film-edit-container
-      = render 'form'
+.container
+  %br
+  = link_to "Back to Film", film_path(@film), class: "btn btn-secondary"
+  %br
+  %br
+  %h1.white= "Edit #{@film.title}'s Details"
+  .film-edit-container
+    = render 'form'

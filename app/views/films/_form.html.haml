@@ -12,7 +12,7 @@
       = f.label :release_date
       = "(#{@film.format_releasedate})"
       .form-row
-        = f.date_select :release_date
+        = f.date_select :release_date, order: [:month, :day, :year]
   .form-group.mb-5
     .white
       = f.label :description
@@ -51,7 +51,7 @@
         = f.fields_for :film_people do |fp|
           = render 'film_person_fields', f: fp
         .links
-          = link_to_add_association 'Add New Person', f, :film_people, class: "btn btn-secondary btn-sm" # OR :people <-- people association doesn't exist on film
+          = link_to_add_association 'Add Person', f, :film_people, {class: "btn btn-secondary btn-sm" } # OR :people <-- people association doesn't exist on film
     .col-md-6
       %h3.white Classifications
       #classifications

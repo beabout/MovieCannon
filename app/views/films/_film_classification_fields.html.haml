@@ -1,7 +1,9 @@
 .nested-fields
-  = f.collection_select :classification_id, Classification.all, :id, :name, {}, class: "classification-name-select"
+  = f.collection_select :classification_id, Classification.all, :id, :name, {include_blank: "Select a Classification"}, class: "classification-name-select"
   = f.fields_for :classification do |cf|
     = cf.text_field :name, class: "classification-name-text", style: "display:none;"
   = f.text_field :value
   = link_to_remove_association "Remove Classification", f, class: "btn btn-secondary btn-sm", data: {confirm: "Are you sure you want to remove this classification?"}
+  %button.btn.btn-link.btn-sm{ type: 'button', data: { add_classification: true } } Edit Classification Type
+%br
 %br

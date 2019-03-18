@@ -34,7 +34,8 @@ document.addEventListener("turbolinks:load", function() {
     $(".person-name-text", context).show();
   })
 
-  $("[data-add-classification]").on('click', function(e) {
+  $("#classifications").delegate("[data-add-classification]",'click', function(e) {
+    console.log(this);
     var context = $(this).parents(".nested-fields");
     $(".classification-name-select", context).hide();
     $(".classification-name-text", context).show();
