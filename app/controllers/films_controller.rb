@@ -32,6 +32,7 @@ class FilmsController < ApplicationController
 
   # Create new film
   def new
+    @film = Film.new
   end
 
   def film_params

@@ -10,7 +10,7 @@
       = f.select :mpaa_rating, Film::MPAARatings, {}, class: 'form-control js-example-basic-single'
     .col-md-3.white
       = f.label :release_date
-      - if @film.release_date
+      - if !@film.release_date.nil?
         = "(#{@film.format_releasedate})"
       .form-row
         = f.date_select :release_date, order: [:month, :day, :year]
@@ -18,12 +18,12 @@
     .white
       = f.label :description
     .form-row
-      = f.trix_editor :description, required: true, autofocus: true, placeholder: "Write Description here"
+      = f.trix_editor :description, required: true, autofocus: true
 
   .form-group.form-row
     .col-md-4.white
       = f.label :run_time
-      - if @film.run_time
+      - if !@film.run_time.nil?
         = "(#{@film.format_runtime.capitalize})"
       = f.text_field :run_time, class: 'form-control'
     .col-md-8
