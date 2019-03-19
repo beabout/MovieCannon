@@ -186,11 +186,34 @@ trix-toolbar {
   color: #010000;
 }
 
-.bold{
+.boldhead{
   font-size: 1.25rem;
   font-weight: bold;
   font-style: oblique;
 }
+
+.bold{
+  font-weight:bold;
+}
+
+.mvp{
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  text-align: center;
+  .card-body{
+    opacity: 1;
+    text-align: left;
+    height: 7rem;
+    color: #168679;;
+  }
+  .card{
+    opacity: 0.8;
+    border-radius: 2rem;
+  }
+
+}
+
 
 // .review-text-box{
 //   margin-right: 15rem;
