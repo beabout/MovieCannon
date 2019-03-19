@@ -2,10 +2,10 @@
   = error_messages_for(@film)
 
   .form-row.form-group.align-items-center
-    .col-md-6.white
+    .col-md-5.white
       = f.label :title, class: 'bold'
       = f.text_field :title, required: true, autofocus: true, class: 'form-control'
-    .col-md-3.white
+    .col-md-4.white
       = f.label :release_date, class: 'bold'
       - if @film.release_date
         = "(#{@film.format_releasedate})"
@@ -27,8 +27,8 @@
       = f.label :run_time, class: 'bold'
       - if @film.run_time
         = "(#{@film.format_runtime.capitalize})"
-      = f.text_field :run_time, class: 'form-control'
-    .col-md-8
+      = f.text_field :run_time, class: 'form-control', placeholder: "Write in minutes (ex. 2hrs = 120)"
+    .col-md-7
       .white
         = f.label :genres, class: 'bold'
       = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {:multiple => true, class: 'black js-example-basic-multiple form-control'}

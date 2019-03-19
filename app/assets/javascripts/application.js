@@ -30,17 +30,15 @@ document.addEventListener("turbolinks:load", function() {
   $("#people").delegate("[data-add-person]", 'click', function(e) {
     console.log(this);
     var context = $(this).parents(".nested-fields");
-    $(".person-name-select", context).hide();
-    $(".person-name-text", context).show();
-    $(".person-birthdate-field", context).show();    
+    $(".person-name-select", context).hide().prop("disabled", true);
+    $(".person-name-text", context).show().prop("disabled", false);
+    $(".person-birthdate-field", context).show().prop("disabled", false);
   })
 
   $("#classifications").delegate("[data-add-classification]",'click', function(e) {
     console.log(this);
     var context = $(this).parents(".nested-fields");
-    $(".classification-name-select", context).hide();
-    $(".classification-name-text", context).show();
+    $(".classification-name-select", context).hide().prop('disabled', true);
+    $(".c-name-text", context).show().prop("disabled", false);
   })
 });
-
-// .prop('disabled', true)
