@@ -3,44 +3,46 @@
 
   .form-row.form-group.align-items-center
     .col-md-6.white
-      = f.label :title
+      = f.label :title, class: 'bold'
       = f.text_field :title, required: true, autofocus: true, class: 'form-control'
-    .col-md-2.white
-      = f.label :mpaa_rating
-      = f.select :mpaa_rating, Film::MPAARatings, {}, class: 'form-control js-example-basic-single'
     .col-md-3.white
-      = f.label :release_date
+      = f.label :release_date, class: 'bold'
       - if @film.release_date
         = "(#{@film.format_releasedate})"
       .form-row
-        = f.date_select :release_date, order: [:month, :day, :year]
+        = f.date_field :release_date, class: 'form-control'
+        -# = f.date_select :release_date, order: [:month, :day, :year], class: 'form-control'
+    .col-md-2.white
+      = f.label :mpaa_rating, class: 'bold'
+      = f.select :mpaa_rating, Film::MPAARatings, {}, class: 'form-control js-example-basic-single'
+
   .form-group.mb-5
     .white
-      = f.label :description
+      = f.label :description, class: 'bold'
     .form-row
       = f.trix_editor :description, required: true, autofocus: true, placeholder: "Write Description here"
 
   .form-group.form-row
     .col-md-4.white
-      = f.label :run_time
+      = f.label :run_time, class: 'bold'
       - if @film.run_time
         = "(#{@film.format_runtime.capitalize})"
       = f.text_field :run_time, class: 'form-control'
     .col-md-8
       .white
-        = f.label :genres
+        = f.label :genres, class: 'bold'
       = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {:multiple => true, class: 'black js-example-basic-multiple form-control'}
 
   %br
   .form-row
     .field.col-md-6.white
-      = f.label :filmshot
+      = f.label :filmshot, class: 'bold'
       %br
       = f.file_field :filmshot
   %br
   .form-row
     .field.col-md-6.white
-      = f.label :movie_poster
+      = f.label :movie_poster, class: 'bold'
       %br
       = f.file_field :movie_poster
 

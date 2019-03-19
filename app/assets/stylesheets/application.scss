@@ -153,6 +153,7 @@ body {
 
 trix-editor {
   background-color: white;
+  width: 90%;
 }
 
 text_field {
@@ -183,6 +184,11 @@ trix-toolbar {
 
 .select-2selection__choice{
   color: #010000;
+}
+
+.bold{
+  font-weight: bold;
+  font-style: oblique;
 }
 
 // .review-text-box{
