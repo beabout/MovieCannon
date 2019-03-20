@@ -4,13 +4,14 @@ class Film < ApplicationRecord
   has_one_attached :filmshot
   has_and_belongs_to_many :genres
   # has_many :classifications, through: :film_classifications
-  has_many :film_classifications
-  has_many :film_people
-  has_many :reviews
+  has_many :film_classifications, dependent: :destroy
+  has_many :film_people, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   # has_many :people, through: :film_people #allows film.people
   accepts_nested_attributes_for :film_people, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :film_classifications, reject_if: :all_blank, allow_destroy: true
   validates_presence_of :title
+  validates :title, uniqueness: true
   validates_associated :film_people
   validate :has_nationality_classification
 
