@@ -10,8 +10,7 @@ class Film < ApplicationRecord
   # has_many :people, through: :film_people #allows film.people
   accepts_nested_attributes_for :film_people, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :film_classifications, reject_if: :all_blank, allow_destroy: true
-  validates_presence_of :title
-  validates :title, uniqueness: true
+  validates :title, uniqueness: true, presence: true
   validates_associated :film_people
 
   MPAARatings = ["G", "PG", "PG13", "R"]
