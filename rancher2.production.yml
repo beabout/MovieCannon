@@ -1,0 +1,11 @@
+rancher:
+  workloads:
+    - context: c-7r6hk:p-98tpf
+      deployment: app
+      container: app
+
+s2i:
+  builder_image: brandnewbox/bnb-ruby:2.6-postgresql
+  target_image: bnb/moviecannon
+  flags: -e RAILS_ENV=production -e DEVISE_SECRET_KEY=shipit_chokes_without_this
+  registry_host: 596395833517.dkr.ecr.us-east-1.amazonaws.com
