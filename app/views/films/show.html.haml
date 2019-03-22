@@ -12,6 +12,7 @@
         - if user_signed_in? && current_user.admin
           .text-center
             = link_to "Edit #{@film.title}'s Details", edit_film_path(@film), {class: "btn btn-secondary"}
+
       .col-md-8
         .card.d-inline-block
           .card-body.p-2
@@ -48,3 +49,7 @@
         %br
       - if user_signed_in? && current_user.has_review_for_film?(@film) == false
         = link_to "Add a Review", new_film_review_path(@film), class: "btn btn-secondary"
+%br
+- if user_signed_in? && current_user.admin
+  .text-center
+    = link_to "Delete #{@film.title}", film_path(@film), method: :delete, data: {confirm: "Are you certain you want to delete #{@film.title}?"}, class: "btn btn-danger btn-lg"

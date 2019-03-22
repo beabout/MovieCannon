@@ -2,48 +2,47 @@
   = error_messages_for(@film)
 
   .form-row.form-group.align-items-center
-    .col-md-5.white
-      = f.label :title, class: 'boldhead'
+    .col-md-6.white
+      = f.label :title
       = f.text_field :title, required: true, autofocus: true, class: 'form-control'
-    .col-md-4.white
-      = f.label :release_date, class: 'boldhead'
-      - if @film.release_date
+    .col-md-2.white
+      = f.label :mpaa_rating
+      = f.select :mpaa_rating, Film::MPAARatings, {}, class: 'form-control js-example-basic-single'
+    .col-md-3.white
+      = f.label :release_date
+      - if !@film.release_date.nil?
         = "(#{@film.format_releasedate})"
       .form-row
-        = f.date_field :release_date, class: 'form-control'
-        -# = f.date_select :release_date, order: [:month, :day, :year], class: 'form-control'
-    .col-md-2.white
-      = f.label :mpaa_rating, class: 'boldhead'
-      = f.select :mpaa_rating, Film::MPAARatings, {}, class: 'form-control js-example-basic-single'
-
+        = f.date_select :release_date, order: [:month, :day, :year]
   .form-group.mb-5
     .white
-      = f.label :description, class: 'boldhead'
+      = f.label :description
     .form-row
-      = f.trix_editor :description, required: true, autofocus: true, placeholder: "Write Description here"
+      = f.trix_editor :description, required: true, autofocus: true
 
   .form-group.form-row
     .col-md-4.white
-      = f.label :run_time, class: 'boldhead'
-      - if @film.run_time
+      = f.label :run_time
+      - if !@film.run_time.nil?
         = "(#{@film.format_runtime.capitalize})"
-      = f.text_field :run_time, class: 'form-control', placeholder: "Write in minutes (ex. 2hrs = 120)"
-    .col-md-7
+      = f.text_field :run_time, class: 'form-control'
+    .col-md-8
       .white
-        = f.label :genres, class: 'boldhead'
+        = f.label :genres
       = f.collection_select :genre_ids, Genre.all, :id, :name, {}, {:multiple => true, class: 'black js-example-basic-multiple form-control'}
+
   %br
   .form-row
     .field.col-md-6.white
-      = f.label :movie_poster, class: 'boldhead'
-      %br
-      = f.file_field :movie_poster
-  %br
-  .form-row
-    .field.col-md-6.white
-      = f.label :filmshot, class: 'boldhead'
+      = f.label :filmshot
       %br
       = f.file_field :filmshot
+  %br
+  .form-row
+    .field.col-md-6.white
+      = f.label :movie_poster
+      %br
+      = f.file_field :movie_poster
 
   %br
   %br

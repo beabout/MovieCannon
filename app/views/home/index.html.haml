@@ -1,8 +1,21 @@
 = content_for :background_image, 'soundofmusic.jpg'
 
-.homepage
-  %h2 MovieCannon
-  %h3 Welcome to the world's largest film Catalog!
-  .text-center
-    = link_to "To Catalog", films_path, class: "btn btn-secondary btn-lg"
-  -# = link_to 'Edit Working Data', [:edit,:admin_portal,@bis], class: 'btn btn-sm btn-warning-outline'
+.container
+  .homepage
+    %h2{style: "font-weight: bold"} MovieCannon
+    -# %h3{style: "font-style: oblique"} Welcome to the film Catalog!
+    %br
+  .mvp
+    .row
+      - @mvp.stats.each do |stat|
+        .col-12.col-sm-6.col-md-6
+          .card.mb-6
+            .card-body
+              %h3{style: "font-size: 1.5rem"}= stat.label
+              = link_to stat.link_label || "link", stat.link if stat.link
+          %br
+
+    %br
+    .text-center
+      = link_to "To Catalog", films_path, class: "btn btn-secondary btn-lg bold"
+    -# = link_to 'Edit Working Data', [:edit,:admin_portal,@bis], class: 'btn btn-sm btn-warning-outline'

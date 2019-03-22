@@ -1,14 +1,21 @@
 .container
+
   .homepage
     %h2 Catalog
-  .search
-    = search_form_for @q do |f|
-      Search by Title, MPAA Rating or Description:
-      = f.search_field :title_or_mpaa_rating_or_description_cont
-      = f.submit
 
+    = form_tag url_for, method: :get do
+      = label_tag 'Search '
+      = text_field_tag :q
+
+    -# = form_for :q do |f|
+    -#   = label_tag 'Sort By'
+    -#   = f.select :q, Film::SortBy, {}, {class: 'form-control js-example-basic-single', style: "width: 10rem;"}
+    -#   = f.submit
+
+  %br
+  %br
   .row
-    - @movies.each do |film|
+    - @films.order(title: :asc).each do |film|
       .col-12.col-sm-6.col-md-4
         .card.mb-4
           - if film.movie_poster.attached?
