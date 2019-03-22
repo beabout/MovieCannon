@@ -75,8 +75,11 @@ gem 'trix-rails', require: 'trix'
 gem 'cocoon'
 
 # Added 03-05-19
-
 gem 'jquery-rails'
+
+# Added 03-20-19
+# Postgres searching
+gem 'pg_search'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

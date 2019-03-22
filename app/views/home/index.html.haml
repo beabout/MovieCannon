@@ -3,7 +3,7 @@
 .container
   .homepage
     %h2{style: "font-weight: bold"} MovieCannon
-    %h3{style: "font-style: oblique"} Welcome to the world's largest film Catalog!
+    -# %h3{style: "font-style: oblique"} Welcome to the film Catalog!
     %br
   .mvp
     .row
@@ -12,7 +12,7 @@
           .card.mb-6
             .card-body
               %h3{style: "font-size: 1.5rem"}= stat.label
-              = link_to "Link", stat.link if stat.link
+              = link_to stat.link_label || "link", stat.link if stat.link
           %br
 
     %br

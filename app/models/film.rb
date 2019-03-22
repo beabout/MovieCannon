@@ -13,9 +13,14 @@ class Film < ApplicationRecord
   validates_presence_of :title
   validates :title, uniqueness: true
   validates_associated :film_people
-  validate :has_nationality_classification
 
   MPAARatings = ["G", "PG", "PG13", "R"]
+  SortBy = ["Release Date", "MPAA Rating", "Run Time"]
+
+  scope :pg_search, ->(query) {
+    return all if query.blank?
+    where("to_tsvector(title || ' ' || description || ' ' || release_date || ' ' || mpaa_rating) @@ plainto_tsquery('#{query}')")
+  }
 
   def format_runtime
     if run_time > 60
@@ -37,11 +42,5 @@ class Film < ApplicationRecord
     genres.map { |s| s.name }.join(", ")
   end
 
-  def has_nationality_classification
-    # find nationality classification
-    # if not found
-    #  errors.add(:base, "No nationality classification present")
-    # end
-  end
 
 end

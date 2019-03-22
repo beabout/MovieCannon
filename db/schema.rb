@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_25_160505) do
+ActiveRecord::Schema.define(version: 2019_03_20_192642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_02_25_160505) do
     t.date "release_date"
     t.float "run_time"
     t.string "mpaa_rating"
+    t.tsvector "search_tsv"
   end
 
   create_table "films_genres", id: false, force: :cascade do |t|
