@@ -59,24 +59,24 @@ class Mvp
   # Returns a Stat with the oldest film in the catalog based on release_date
   ###
   def oldest_film
-    @film = Film.order(release_date: :asc).first
-    Stat.new("The oldest film in the catalog is #{@film.title} (#{@film.year})", [@film], @film.title)
+    film = Film.order(release_date: :asc).first
+    Stat.new("The oldest film in the catalog is #{film.title} (#{film.year})", [film], film.title) if film
   end
 
   ###
   # Returns a Stat with the oldest person in the catalog based on birthdate
   ###
   def oldest_person
-    @person = Person.order(birthdate: :asc).first
-    Stat.new("The oldest person in the catalog is #{@person.name} (born in #{@person.birth_year})")
+    person = Person.order(birthdate: :asc).first
+    Stat.new("The oldest person in the catalog is #{person.name} (born in #{person.birth_year})") if person
   end
 
   ###
   # Returns a Stat with the youngest person in the catalog based on birthdate
   ###
   def youngest_person
-    @person = Person.order(birthdate: :desc).first
-    Stat.new("The youngest person in the catalog is #{@person.name} (born in #{@person.birth_year})")
+    person = Person.order(birthdate: :desc).first
+    Stat.new("The youngest person in the catalog is #{person.name} (born in #{person.birth_year})") if person
   end
 
 
