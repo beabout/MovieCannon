@@ -6,4 +6,9 @@ class FilmPerson < ApplicationRecord
   validates_associated :person
 
   accepts_nested_attributes_for :person
+
+  def update_search_person
+    film.update_search_tsv
+  end
+
 end

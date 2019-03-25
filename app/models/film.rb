@@ -21,30 +21,7 @@ class Film < ApplicationRecord
   scope :pg_search, ->(query) {
     return all if query.blank?
     where("search_tsv @@ plainto_tsquery('#{query}')")
-    # Film.connection.query(
-    #   "select distinct films.id, films.*, string_agg(people.name::text, ' '::text) from films
-    #   inner join film_people on film_people.film_id = films.id
-    #   inner join people on film_people.person_id = people.id
-    #   where to_tsvector(title || ' ' || description || ' ' || people.name || ' ' || people.birthdate) @@ plainto_tsquery('#{query}')
-    #   group by films.id"
-    # )
-    # where("to_tsvector(title || ' ' || description || ' ' || release_date || ' ' || mpaa_rating || ' ' || people.name || ' ' || people.birthdate) @@ plainto_tsquery('#{query}')")
-
-
-    # Testing SQL Querying
-
-    # sql = "Select person_id FROM film_people WHERE id = '#{id}'"
-    # records_array = ActiveRecord::Base.connection.execute(sql)
-    # "select distinct films.id, films.title, string_agg(people.name::text, ' '::text) from films
-    # inner join film_people on film_people.film_id = films.id
-    # inner join people on film_people.person_id = people.id"
-    # values = ActiveRecord::Base.connection.exec_query(
-    #   "select distinct films.id, films.title, string_agg(people.name::text, ' '::text) from films
-    #   inner join film_people on film_people.film_id = films.id
-    #   inner join people on film_people.person_id = people.id"
-    # )
-    # where("to_tsvector(title || ' ' || description || ' ' || people.name) @@ plainto_tsquery('#{query}') group by films.id")
-  }
+    }
 
   def format_runtime
     if run_time > 60

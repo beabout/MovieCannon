@@ -5,6 +5,13 @@ class Person < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  after_save :update_person
+
+  def update_person
+    film_people.each do |fp|
+      fp.update_search_person
+    end
+  end
 
 
 

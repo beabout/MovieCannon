@@ -59,6 +59,7 @@ Trestle.resource(:films) do
 
   end
 
+
   # By default, all parameters passed to the update and create actions will be
   # permitted. If you do not have full trust in your users, you should explicitly
   # define the list of permitted parameters.
