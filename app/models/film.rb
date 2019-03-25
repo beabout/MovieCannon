@@ -13,12 +13,37 @@ class Film < ApplicationRecord
   validates :title, uniqueness: true, presence: true
   validates_associated :film_people
 
+  after_save :update_search_tsv
+
   MPAARatings = ["G", "PG", "PG13", "R"]
   SortBy = ["Release Date", "MPAA Rating", "Run Time"]
 
   scope :pg_search, ->(query) {
     return all if query.blank?
-    where("to_tsvector(title || ' ' || description || ' ' || release_date || ' ' || mpaa_rating) @@ plainto_tsquery('#{query}')")
+    where("search_tsv @@ plainto_tsquery('#{query}')")
+    # Film.connection.query(
+    #   "select distinct films.id, films.*, string_agg(people.name::text, ' '::text) from films
+    #   inner join film_people on film_people.film_id = films.id
+    #   inner join people on film_people.person_id = people.id
+    #   where to_tsvector(title || ' ' || description || ' ' || people.name || ' ' || people.birthdate) @@ plainto_tsquery('#{query}')
+    #   group by films.id"
+    # )
+    # where("to_tsvector(title || ' ' || description || ' ' || release_date || ' ' || mpaa_rating || ' ' || people.name || ' ' || people.birthdate) @@ plainto_tsquery('#{query}')")
+
+
+    # Testing SQL Querying
+
+    # sql = "Select person_id FROM film_people WHERE id = '#{id}'"
+    # records_array = ActiveRecord::Base.connection.execute(sql)
+    # "select distinct films.id, films.title, string_agg(people.name::text, ' '::text) from films
+    # inner join film_people on film_people.film_id = films.id
+    # inner join people on film_people.person_id = people.id"
+    # values = ActiveRecord::Base.connection.exec_query(
+    #   "select distinct films.id, films.title, string_agg(people.name::text, ' '::text) from films
+    #   inner join film_people on film_people.film_id = films.id
+    #   inner join people on film_people.person_id = people.id"
+    # )
+    # where("to_tsvector(title || ' ' || description || ' ' || people.name) @@ plainto_tsquery('#{query}') group by films.id")
   }
 
   def format_runtime
@@ -39,6 +64,18 @@ class Film < ApplicationRecord
 
   def genre_list
     genres.map { |s| s.name }.join(", ")
+  end
+
+  def update_search_tsv
+    genres_sql = genres.map { |g| "to_tsvector('#{g.name}')" }.join(" || ")
+    people_sql = film_people.map { |fp| "to_tsvector('#{fp.person.name}') || to_tsvector('#{fp.person.birthdate}')"}.join(" || ")
+    classifications_sql = film_classifications.map { |fc| "to_tsvector('#{fc.classification.name}') || to_tsvector('#{fc.value}')"}.join(" || ")
+    sql = ["to_tsvector(title)", "to_tsvector(description)", "to_tsvector(mpaa_rating)", genres_sql, classifications_sql, people_sql].reject(&:blank?).join(" || ")
+    ActiveRecord::Base.connection.exec_query(<<-SQL)
+      UPDATE films
+      SET search_tsv = (#{sql})
+      WHERE films.id = #{id}
+    SQL
   end
 
 
