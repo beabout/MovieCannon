@@ -1,4 +1,5 @@
 class Classification < ApplicationRecord
+  has_many :film_classifications
   has_many :films, through: :film_classifications
 
   after_save :update_classification
