@@ -1,9 +1,10 @@
 .nested-fields
   = f.collection_select :person_type_id, PersonType.all, :id, :name, :disabled => false
-  = f.collection_select :person_id, Person.all, :id, :name, { include_blank: "Select a person" }, class: "person-name-select black js-example-basic-multiple form-control", style:  "width:16rem;",  :disabled => false
+  = f.collection_select :person_id, Person.all.order(name: :asc), :id, :name, { include_blank: "Select a person" }, class: "person-name-select black js-example-basic-multiple form-control", style:  "width:16rem;",  :disabled => false
   = f.fields_for :person, Person.new do |pf|
     = pf.text_field :name, class: "person-name-text", style: "display:none;", :disabled => true # value: nil : will make every person's text-field nil which will throw a validation error
     = pf.date_field :birthdate, class: "person-birthdate-field", style: "display:none;", :disabled => true
+  %br
   = link_to_remove_association "Remove Person", f, class: "btn btn-secondary btn-sm", data: {confirm: "Are you sure you want to remove this person?"}
   %button.btn.btn-link.btn-sm{ type: 'button', data: { add_person: true } } Edit Person Name & Age
 %br

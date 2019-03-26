@@ -75,7 +75,7 @@ class Mvp
   # Returns a Stat with the youngest person in the catalog based on birthdate
   ###
   def youngest_person
-    person = Person.order(birthdate: :desc).first
+    person = Person.where.not(birthdate: nil).order(birthdate: :desc).first
     Stat.new("The youngest person in the catalog is #{person.name} (born in #{person.birth_year})") if person
   end
 

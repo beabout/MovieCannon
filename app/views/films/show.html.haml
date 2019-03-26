@@ -27,6 +27,7 @@
           - @film.film_people.each do |film_person|
             %li
               %span.film-info-badge= "#{film_person.person_type.name}: #{film_person.person.name}"
+          %br
           - @film.film_classifications.each do |classification|
             %li
               %span.film-info-badge= "#{classification.classification.name}: #{classification.value}"
