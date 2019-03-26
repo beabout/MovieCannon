@@ -9,6 +9,8 @@
       .col-12.col-md-4
         - if @film.movie_poster.attached?
           =image_tag @film.movie_poster, {class: "card-img-top img-fluid", height: 400, width: "auto"}
+        - else
+          =image_tag "blankfilm.jpg", {class: "card-img-top", height: 500, width: "auto"}
         - if user_signed_in?
           .text-center
             = link_to "Edit #{@film.title}'s Details", edit_film_path(@film), {class: "btn btn-secondary"}

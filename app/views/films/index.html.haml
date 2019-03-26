@@ -21,7 +21,7 @@
           - if film.movie_poster.attached?
             =image_tag film.movie_poster, {class: "card-img-top img-fluid", height: 500, width: "auto"}
           - else
-            =image_tag "Empirestrikesback.jpg", {class: "card-img-top", height: 500, width: "auto"}
+            =image_tag "blankfilm.jpg", {class: "card-img-top", height: 500, width: "auto"}
           .card-body
             %h4.card-title= "#{film.title} (#{film.year})"
             %h5.card-subtitle
