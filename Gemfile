@@ -81,6 +81,10 @@ gem 'jquery-rails'
 # Postgres searching
 gem 'pg_search'
 
+# Added 03-27-19
+# To make links look super cool using fa icons
+gem 'awesome_link'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

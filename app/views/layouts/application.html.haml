@@ -27,15 +27,16 @@
           - if user_signed_in? && current_user.admin?
             %li.nav-item
               = link_to "Admin", trestle_path, class: "nav-link"
-          -# %li.nav-item
-          -# = link_to root_path, class: "nav-link" do
-          -#   - icon: "fab fa-github"
+          %li.nav-item
+            = link_to "Users", users_path, class: "nav-link"
+          %li.nav-item
+          = link_to "Github", "https://github.com/Cbeeb121/MovieCannon", class: "nav-link fab fa-github"
     - flash.each do |key, value|
       .alert= value
 
     - if content_for? :background_image
       .background{ style: "position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.3; z-index: -999;" }
-        = image_tag content_for(:background_image), {:width => "90%", :height => "auto", align:"middle"}
+        = image_tag content_for(:background_image), {:width => "100%", :height => "auto", align:"middle"}
 
     = yield
 

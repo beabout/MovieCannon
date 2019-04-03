@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :load_film
 
   def index
-
+    
   end
 
   def show

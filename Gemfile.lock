@@ -62,6 +62,7 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.4.7)
       execjs
+    awesome_link (0.0.6)
     bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.4.0)
@@ -292,6 +293,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_link
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3.1)
   byebug

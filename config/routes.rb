@@ -10,4 +10,6 @@ end
 
 resources :people
 
+resources :users
+
 end

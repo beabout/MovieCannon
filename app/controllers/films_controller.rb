@@ -7,9 +7,6 @@ class FilmsController < ApplicationController
   # Display contents (info, Persons, classifications) for a specific film
   def show
     @film = Film.find(params[:id])
-    # @people = Film.film_people
-    # @film_classif = Film.film_classifications
-    # @reviews =
   end
 
   # Allow editing of a film's data

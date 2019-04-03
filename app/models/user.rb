@@ -11,7 +11,3 @@ class User < ApplicationRecord
     reviews.where(film: film).exists?
   end
 end
-
-
-# @films.includes(:reviews).where(("reviews.id LIKE ?", "#{film.id}").exist?) => true)
-# reviews.includes(:review).where(("reviews.film_id LIKE ?", "#{film.id}").exists?) => true

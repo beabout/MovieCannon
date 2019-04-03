@@ -1,21 +1,25 @@
 = form_for @film do |f|
   = error_messages_for(@film)
 
-  .form-row.form-group.align-items-center
+  .form-row
     .col-md-5.white
       = f.label :title, class: 'boldhead'
       = f.text_field :title, required: true, autofocus: true, class: 'form-control'
-    .col-md-4.white
+  %br
+  .form-row
+    .col-md-5.white
       = f.label :release_date, class: 'boldhead'
       - if @film.release_date
         = "(#{@film.format_releasedate})"
       .form-row
         = f.date_field :release_date, class: 'form-control'
         -# = f.date_select :release_date, order: [:month, :day, :year], class: 'form-control'
+  %br
+  .form-row
     .col-md-2.white
       = f.label :mpaa_rating, class: 'boldhead'
       = f.select :mpaa_rating, Film::MPAARatings, {}, class: 'form-control js-example-basic-single'
-
+  %br
   .form-group.mb-5
     .white
       = f.label :description, class: 'boldhead'

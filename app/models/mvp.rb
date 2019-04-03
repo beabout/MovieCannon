@@ -87,7 +87,7 @@ class Mvp
     count = Review.group(:user_id).count.max_by { |k, v| v }
     if count
       user = User.find(count.first)
-      Stat.new("#{user.email} has written the most reviews (#{count.second} Reviews)")
+      Stat.new("#{user.email} has written the most reviews (#{count.second} Reviews)", [user], "#{user.email}'s Reviews") if user
     end
 
   end

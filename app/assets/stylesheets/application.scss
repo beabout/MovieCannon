@@ -28,7 +28,7 @@ body {
 }
 
 .text-center{
-  padding-top: 1rem;
+  padding-top: 2rem;
   text-align: center;
 }
 
@@ -212,6 +212,16 @@ trix-toolbar {
     border-radius: 2rem;
   }
 
+}
+
+.reviews-table{
+  background-color:white;
+  border-radius: 1rem;
+  // border:0px solid #ffffff;
+  th, td{
+    border-top:0px solid #ffffff;
+  }
+  // border: 1px solid black;
 }
 
 
