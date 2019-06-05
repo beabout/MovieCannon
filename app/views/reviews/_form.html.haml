@@ -1,5 +1,9 @@
 = form_for [@film, @review] do |f|
   = error_messages_for(@review)
+  Rating (out of 20):
+  = f.text_field :rating, required: true, autofocus: true
+  %br
+  %br
   = f.trix_editor :description, required: true, autofocus: true
   %br
     = f.submit "submit", class: "btn btn-secondary btn-sm"

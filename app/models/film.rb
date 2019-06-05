@@ -55,5 +55,4 @@ class Film < ApplicationRecord
     SQL
   end
 
-
 end

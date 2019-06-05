@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :load_film
 
   def index
-    
+
   end
 
   def show
@@ -31,7 +31,6 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    # @description = params[:description]
     @review.update(review_params)
     if @review.save
       redirect_to film_path(@film)
@@ -47,15 +46,13 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:description)
+    params.require(:review).permit(:description, :rating)
   end
-
 
   private
 
   def load_film
     @film = Film.find(params[:film_id])
   end
-
 
 end

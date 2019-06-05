@@ -5,14 +5,15 @@
   - else
     %h2.white #{@user.email}'s Reviews
   .container
-    %table.table.reviews-table
-      %thead
-        %tr
-          %th Film
-          %th Review
-      %tbody
-        - @user.reviews.each do |review|
+    - if @user.reviews
+      %table.table.reviews-table
+        %thead
           %tr
-            %td{style: "width:20%; text-align:left;"}= link_to "#{review.film.title}", film_path(review.film)
+            %th Film
+            %th Review
+        %tbody
+          - @user.reviews.each do |review|
+            %tr
+              %td{style: "width:20%; text-align:left;"}= link_to "#{review.film.title}", film_path(review.film)
 
-            %td{style: "text-align:left; width:80%;"}= sanitize(review.description)
+              %td{style: "text-align:left; width:80%;"}= sanitize(review.description)

@@ -39,7 +39,12 @@
       - @film.reviews.each do |review|
         .card.card-mb-8
           .card-body
-            %h4.card-title= "#{review.user.email}'s Review"
+            %h4.card-title
+              - if review.rating
+                = "#{review.user.email}'s Review | "
+                = review.formatted_rating
+              - else
+                = "#{review.user.email}'s Review"
             %h5.card-subtitle= sanitize(review.description)
             %br
             - if review.user == current_user
