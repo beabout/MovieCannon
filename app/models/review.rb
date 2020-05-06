@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :film
   belongs_to :user
+
   validates :user_id, :film_id, :description, presence: true
   validate :review_must_be_100_characters
 
