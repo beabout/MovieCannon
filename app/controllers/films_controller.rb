@@ -48,7 +48,41 @@ class FilmsController < ApplicationController
   private
 
     def film_params
-      params.require(:film).permit(:title, :description, :release_date, :run_time, :mpaa_rating ,:filmshot, :movie_poster, :trailer_url, genre_ids: [], film_people_attributes: [:id, :person_type_id, :_destroy, :person_id, person_attributes: [:id, :name, :birthdate]], film_classifications_attributes: [:id, :classification_id, :value, :_destroy, classification_attributes: [:id, :name]])
+      params.require(:film).permit(:title,
+                                    :description,
+                                    :release_date,
+                                    :run_time,
+                                    :mpaa_rating ,
+                                    :filmshot,
+                                    :movie_poster,
+                                    :trailer_url,
+                                    genre_ids: [],
+                                    film_people_attributes:
+                                    [
+                                      :id,
+                                      :person_type_id,
+                                      :_destroy,
+                                      :person_id,
+                                      person_attributes:
+                                        [
+                                          :id,
+                                          :name,
+                                          :birthdate
+                                        ]
+                                      ],
+                                      film_classifications_attributes:
+                                      [
+                                        :id,
+                                        :classification_id,
+                                        :value,
+                                        :_destroy,
+                                        classification_attributes:
+                                        [
+                                          :id,
+                                          :name
+                                        ]
+                                      ]
+                                    )
     end
 
 end
