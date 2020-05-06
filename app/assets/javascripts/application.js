@@ -17,15 +17,14 @@
 //= require_tree .
 //= require trix
 //= require cocoon
-//= require select2/dist/js/select2
 
-$( "#dropdown").select2({
-  theme: "bootstrap"
-});
+// $( "#dropdown").select2({
+//   theme: "bootstrap"
+// });
 
-document.addEventListener("turbolinks:load", function() {
-  $('.js-example-basic-single').select2();
-  $('.js-example-basic-multiple').select2();
+// document.addEventListener("turbolinks:load", function() {
+//   $('.js-example-basic-single').select2();
+//   $('.js-example-basic-multiple').select2();
 
   $("#people").delegate("[data-add-person]", 'click', function(e) {
     console.log(this);
