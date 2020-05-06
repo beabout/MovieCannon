@@ -85,6 +85,8 @@ gem 'pg_search'
 # To make links look super cool using fa icons
 gem 'awesome_link'
 
+gem 'webpacker'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
